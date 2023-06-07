@@ -1,16 +1,17 @@
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
         <div>
             <section class="flex items-center justify-center">
 
-                <div className="w-full mt-10 md:mt-16 flex items-center justify-center">
+                <div className="w-full mt-6 flex items-center justify-center">
                     <div class="bg-gray-100 flex  shadow-lg w-full md:w-8/12  items-center">
 
-                        <div class="w-full md:w-1/2 py-8 md:py-0 px-8 md:px-16">
-                            <h2 class="font-bold text-3xl text-indigo-600">Welcome Back!</h2>
+                        <div class="w-full md:w-1/2 py-10 px-8 md:px-16">
+                            <h2 class="font-bold text-2xl md:text-3xl text-indigo-600">Welcome Back!</h2>
                             <p class=" mt-4 text-indigo-600">Login to Continue</p>
 
                             <form action="" class="flex flex-col gap-4">
@@ -34,8 +35,8 @@ const Login = () => {
 
 
                             <div class="mt-3 flex justify-between items-center text-indigo-600 md:hidden">
-                                <p>Don't have an account?</p>
-                                <button class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Register</button>
+                                <p>New Here?</p>
+                                <Link to='/signup' class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Register</Link>
 
                             </div>
                         </div>
@@ -45,10 +46,10 @@ const Login = () => {
                             <div className="absolute flex flex-col px-5 text-center items-center justify-center w-full h-full z-10 hero-overlay bg-opacity-60 ">
                                 <h2 className="text-2xl md:text-4xl font-bold text-white">New Here?</h2>
                                 <p className="text-white my-4 text-lg">Sign Up and Discover a great <br className='hidden md:block' /> amount of new opportunities</p>
-                                <button class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Sign Up</button>
+                                <Link to='/signup' class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Sign Up</Link>
                             </div>
 
-                            <img class=" max-h-[500px] object-cover w-full z-0" src="https://i.ibb.co/PmQGKKj/rendy-novantino-Qwq-H4v-OC0-Co-unsplash.jpg" />
+                            <img class=" max-h-[600px] object-cover w-full z-0" src="https://i.ibb.co/NWYCft9/zarak-khan-v263cl-VYq-4-unsplash.jpg" />
 
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import { FaArrowRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYout
 
 const Footer = () => {
     return (
-        <footer className=" body-font mt-16">
+        <footer className=" body-font mt-16 bg-gray-900 text-white">
             <div className="max-w-7xl px-5 pt-24 mx-auto">
                 <div className="flex flex-wrap md:text-left text-center order-first">
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">

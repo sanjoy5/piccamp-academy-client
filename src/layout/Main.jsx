@@ -28,7 +28,7 @@ const Main = () => {
             <main className='max-w-7xl mx-auto px-4 md:px-2'>
 
                 <div className="relative w-full h-full">
-                    <div className="fixed z-50 top-24 right-0 py-2 md:py-3 px-2 md:px-3 flex items-center justify-center rounded-tl-box rounded-bl-box bg-indigo-600">
+                    <div className="fixed z-50 top-24 right-0">
                         <label className="swap swap-rotate">
 
                             <input type="checkbox"
@@ -38,11 +38,14 @@ const Main = () => {
 
                             {/* sun icon */}
 
-                            <BsSun className='swap-on fill-current text-white text-lg md:text-xl' />
+                            <div className=" py-2 md:py-3 px-2 md:px-3 flex items-center justify-center rounded-tl-box rounded-bl-box bg-indigo-600 swap-on fill-current">
+                                <BsSun className=' text-white text-lg md:text-xl' />
+                            </div>
 
                             {/* moon icon */}
-
-                            <BsMoon className='swap-off fill-current text-white text-lg md:text-xl' />
+                            <div className=" py-2 md:py-3 px-2 md:px-3 flex items-center justify-center rounded-tl-box rounded-bl-box bg-indigo-600 swap-off fill-current">
+                                <BsMoon className=' text-white text-lg md:text-xl' />
+                            </div>
                         </label>
                     </div>
                 </div>
