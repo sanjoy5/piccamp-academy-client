@@ -7,7 +7,7 @@ import { useAuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    const { signIn } = useAuthContext()
+    const { signIn, googleSignIn } = useAuthContext()
     const [error, setError] = useState('')
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -30,6 +30,20 @@ const Login = () => {
                 setError(error.message)
             })
     };
+
+
+    const handleLoginWithGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                setError('')
+                navigate('/')
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
 
 
     return (
@@ -69,7 +83,7 @@ const Login = () => {
                                 <hr class="border-gray-400" />
                             </div>
 
-                            <button class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">
+                            <button onClick={handleLoginWithGoogle} class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">
                                 <FcGoogle className='mr-3 text-3xl' />
                                 Login with Google
                             </button>

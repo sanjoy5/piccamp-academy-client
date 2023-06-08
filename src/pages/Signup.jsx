@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 
 const Signup = () => {
-    const { createUser, updateUserProfile } = useAuthContext()
+    const { createUser, updateUserProfile, googleSignIn } = useAuthContext()
     const [error, setError] = useState('')
     const navigate = useNavigate()
 
@@ -25,6 +25,19 @@ const Signup = () => {
             })
             .catch(error => setError(error.message))
     };
+
+    const handleLoginWithGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                setError('')
+                navigate('/')
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
 
 
     return (
@@ -97,7 +110,7 @@ const Signup = () => {
                                 <hr class="border-gray-400" />
                             </div>
 
-                            <button class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">
+                            <button onClick={handleLoginWithGoogle} class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">
                                 <FcGoogle className='mr-3 text-3xl' />
                                 Sign Up with Google
                             </button>
