@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FcGoogle } from 'react-icons/fc';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 
@@ -9,6 +9,9 @@ const Signup = () => {
     const { createUser, updateUserProfile, googleSignIn } = useAuthContext()
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || "/"
 
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -20,7 +23,7 @@ const Signup = () => {
                 updateUserProfile(registerUser, data.name, data.photoURL)
                     .then(() => {
                         console.log('User Updated');
-                        navigate('/success')
+                        navigate(from, { replace: true })
                     })
             })
             .catch(error => setError(error.message))
@@ -32,7 +35,7 @@ const Signup = () => {
                 const loggedUser = result.user
                 console.log(loggedUser);
                 setError('')
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message)

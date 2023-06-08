@@ -19,7 +19,10 @@ const Header = () => {
         <ActiveLink to='/'>Home</ActiveLink>
         <ActiveLink to='/instructors'>Instructors</ActiveLink>
         <ActiveLink to='/classes'>Classes</ActiveLink>
-        <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
+        {
+            user &&
+            <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
+        }
     </>
 
     return (
