@@ -6,6 +6,7 @@ import Instructors from "../pages/Instructors";
 import Classes from "../pages/Classes";
 import Dashboard from "../pages/Dashboard";
 import Signup from "../pages/Signup";
+import Success from "../pages/Success";
 
 
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                 element: <Signup />,
             },
         ],
+    },
+    {
+        path: "/success",
+        element: <Success />
     },
 ]);
 

@@ -1,25 +1,34 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    const handleLogin = () => {
+
+    }
+
     return (
         <div>
-            <section class="flex items-center justify-center">
+            <Helmet>
+                <title>Login - PicCamp Academy</title>
+            </Helmet>
+            <section class="flex items-center justify-center mt-10 pb-10">
 
                 <div className="w-full mt-6 flex items-center justify-center">
-                    <div class="bg-gray-100 flex  shadow-lg w-full md:w-8/12  items-center">
+                    <div class="bg-base-200 flex  shadow-lg w-full md:w-10/12  items-center">
 
                         <div class="w-full md:w-1/2 py-10 px-8 md:px-16">
-                            <h2 class="font-bold text-2xl md:text-3xl text-indigo-600">Welcome Back!</h2>
-                            <p class=" mt-4 text-indigo-600">Login to Continue</p>
+                            <h2 class="font-bold text-2xl md:text-3xl text-indigo-500">Welcome Back!</h2>
+                            <p class=" mt-4 text-indigo-500">Login to Continue</p>
 
-                            <form action="" class="flex flex-col gap-4">
-                                <input class="p-2 mt-8 rounded-xl border-2 outline-none bg-transparent" type="email" name="email" placeholder="Email" />
+                            <form onSubmit={handleLogin} class="flex flex-col gap-4">
+                                <input class="p-2 mt-8 rounded-xl border border-gray-300 outline-none bg-transparent" type="email" name="email" placeholder="Email" />
 
-                                <input class="p-2 rounded-xl border-2 outline-none bg-transparent" type="password" name="password" placeholder="Password" />
+                                <input class="p-2 rounded-xl border border-gray-300  outline-none bg-transparent" type="password" name="password" placeholder="Password" />
 
-                                <button class="bg-indigo-500 rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
+                                <button type='submit' class="bg-indigo-500 rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
                             </form>
 
                             <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
@@ -28,13 +37,13 @@ const Login = () => {
                                 <hr class="border-gray-400" />
                             </div>
 
-                            <button class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-600">
+                            <button class="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">
                                 <FcGoogle className='mr-3 text-3xl' />
                                 Login with Google
                             </button>
 
 
-                            <div class="mt-3 flex justify-between items-center text-indigo-600 md:hidden">
+                            <div class="mt-3 flex justify-between items-center text-indigo-500 md:hidden">
                                 <p>New Here?</p>
                                 <Link to='/signup' class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Register</Link>
 

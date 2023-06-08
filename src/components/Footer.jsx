@@ -3,7 +3,7 @@ import { FaArrowRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYout
 
 const Footer = () => {
     return (
-        <footer className=" body-font mt-16 bg-gray-900 text-white">
+        <footer className=" body-font mt-16 bg-base-200">
             <div className="max-w-7xl px-5 pt-24 mx-auto">
                 <div className="flex flex-wrap md:text-left text-center order-first">
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -14,10 +14,10 @@ const Footer = () => {
 
                         {/* <h2 className="title-font font-medium  tracking-widest  mb-3 uppercase">Follow Us On</h2> */}
                         <span className=" flex space-x-3 itmes-center justify-center md:justify-start  mb-10">
-                            <FaFacebookF className='cursor-pointer text-lg hover:text-blue-500' />
-                            <FaInstagram className='cursor-pointer text-lg hover:text-blue-500' />
-                            <FaTwitter className='cursor-pointer text-lg hover:text-blue-500' />
-                            <FaLinkedinIn className='cursor-pointer text-lg hover:text-blue-500' />
+                            <FaFacebookF className='cursor-pointer text-lg hover:text-indigo-500' />
+                            <FaInstagram className='cursor-pointer text-lg hover:text-indigo-500' />
+                            <FaTwitter className='cursor-pointer text-lg hover:text-indigo-500' />
+                            <FaLinkedinIn className='cursor-pointer text-lg hover:text-indigo-500' />
                         </span>
 
                     </div>

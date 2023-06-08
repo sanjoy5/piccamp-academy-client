@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <>
-            <div className="bg-base-100 py-3">
+            <div className=" py-3">
                 <div className="navbar max-w-7xl mx-auto">
                     <div className="navbar-start">
                         <div className="dropdown">
