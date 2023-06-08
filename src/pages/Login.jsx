@@ -5,10 +5,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const Login = () => {
     const { signIn, googleSignIn } = useAuthContext()
     const [error, setError] = useState('')
+    const [show, setShow] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -37,13 +39,24 @@ const Login = () => {
 
 
     const handleLoginWithGoogle = () => {
+
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user
-                console.log(loggedUser);
-                setError('')
-                navigate(from, { replace: true })
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL }
+                fetch('http://127.0.0.1:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate(from, { replace: true })
+                    })
             })
+
             .catch(error => {
                 setError(error.message)
             })
@@ -75,8 +88,16 @@ const Login = () => {
 
                                 {errors.email && <span className='text-red-500 mt-1'>Email field is required</span>}
 
-                                <input class="p-2 rounded-xl border border-gray-300  outline-none bg-transparent" type="password" {...register("password", { required: true })} placeholder="Password" />
+                                <div class="relative">
+                                    <input class="p-2 rounded-xl border border-gray-300 outline-none bg-transparent  w-full" type={show ? 'text' : 'password'} {...register("password", { required: true })} placeholder="Password" />
+
+                                    {
+                                        show ? <BsEyeSlash onClick={() => setShow(!show)} class=" absolute top-1/2 right-3 -translate-y-1/2 text-lg cursor-pointer" />
+                                            : <BsEye onClick={() => setShow(!show)} class=" absolute top-1/2 right-3 -translate-y-1/2 text-lg cursor-pointer" />
+                                    }
+                                </div>
                                 {errors.password && <span className='text-red-500 mt-1'>Password field is required</span>}
+
 
                                 <button type='submit' class="bg-indigo-500 rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
                             </form>

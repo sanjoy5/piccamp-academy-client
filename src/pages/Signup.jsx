@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useAuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2'
 
 const Signup = () => {
     const { createUser, updateUserProfile, googleSignIn } = useAuthContext()
@@ -22,21 +23,57 @@ const Signup = () => {
                 const registerUser = result.user
                 updateUserProfile(registerUser, data.name, data.photoURL)
                     .then(() => {
-                        console.log('User Updated');
-                        navigate(from, { replace: true })
+                        const saveUser = { name: data.name, email: data.email, photo: data.photoURL }
+                        fetch('http://127.0.0.1:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.insertedId) {
+                                    setError('')
+                                    reset()
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'User was created successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate('/success')
+
+                                }
+                            })
+
                     })
+                    .catch(error => setError(error.message))
             })
             .catch(error => setError(error.message))
     };
 
     const handleLoginWithGoogle = () => {
+
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user
-                console.log(loggedUser);
-                setError('')
-                navigate(from, { replace: true })
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL }
+                fetch('http://127.0.0.1:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate(from, { replace: true })
+                    })
             })
+
             .catch(error => {
                 setError(error.message)
             })

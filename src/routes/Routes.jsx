@@ -4,10 +4,10 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Instructors from "../pages/Instructors";
 import Classes from "../pages/Classes";
-import Dashboard from "../pages/Dashboard";
 import Signup from "../pages/Signup";
 import Success from "../pages/Success";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/Dashboard";
 
 
 
@@ -29,10 +29,6 @@ const router = createBrowserRouter([
                 element: <Classes />,
             },
             {
-                path: "/dashboard",
-                element: <PrivateRoute><Dashboard /></PrivateRoute>,
-            },
-            {
                 path: "/login",
                 element: <Login />,
             },
@@ -41,6 +37,10 @@ const router = createBrowserRouter([
                 element: <Signup />,
             },
         ],
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
     },
     {
         path: "/success",
