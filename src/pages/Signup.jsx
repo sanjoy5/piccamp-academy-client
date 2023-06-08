@@ -33,14 +33,10 @@ const Signup = () => {
                 <title>Register - PicCamp Academy</title>
             </Helmet>
 
-            <section class="flex items-center justify-center mt-10 pb-10">
-                {
-                    error && <label className="label">
-                        <p className="text-sm mb-4 text-red-500">{error}</p>
-                    </label>
-                }
+            <section class="flex flex-col items-center justify-center mt-10 pb-10">
 
-                <div className="w-full mt-6 flex items-center justify-center">
+
+                <div className="w-full  flex items-center justify-center">
                     <div class="bg-base-200 flex  shadow-lg w-full md:w-10/12  items-center">
 
                         <div class="md:block hidden w-1/2 relative ">
@@ -57,7 +53,11 @@ const Signup = () => {
 
                         <div class="w-full md:w-1/2 py-8 px-8 md:px-16">
                             <h2 class="font-bold text-3xl text-indigo-500 text-center">Registration</h2>
-
+                            {
+                                error && <label className="label">
+                                    <p className="mt-4 text-red-500"><strong>Error:</strong> {error}</p>
+                                </label>
+                            }
 
                             <form onSubmit={handleSubmit(onSubmit)} class="flex flex-col gap-4">
 

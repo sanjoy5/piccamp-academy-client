@@ -1,32 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { useAuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+    const { signIn } = useAuthContext()
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const onSubmit = data => {
+        // console.log(data);
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user
 
-    const handleLogin = () => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User Login Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/')
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    };
 
-    }
 
     return (
         <div>
             <Helmet>
                 <title>Login - PicCamp Academy</title>
             </Helmet>
-            <section class="flex items-center justify-center mt-10 pb-10">
+            <section class="flex flex-col items-center justify-center mt-10 pb-10">
 
-                <div className="w-full mt-6 flex items-center justify-center">
+
+                <div className="w-full flex items-center justify-center">
                     <div class="bg-base-200 flex  shadow-lg w-full md:w-10/12  items-center">
 
                         <div class="w-full md:w-1/2 py-10 px-8 md:px-16">
                             <h2 class="font-bold text-2xl md:text-3xl text-indigo-500">Welcome Back!</h2>
-                            <p class=" mt-4 text-indigo-500">Login to Continue</p>
+                            <p class=" mt-3 text-indigo-500">Login to Continue</p>
+                            {
+                                error && <label className="label">
+                                    <p className="mt-2 text-red-500"><strong>Error</strong>: {error}</p>
+                                </label>
+                            }
 
-                            <form onSubmit={handleLogin} class="flex flex-col gap-4">
-                                <input class="p-2 mt-8 rounded-xl border border-gray-300 outline-none bg-transparent" type="email" name="email" placeholder="Email" />
+                            <form onSubmit={handleSubmit(onSubmit)} class="flex flex-col gap-4">
+                                <input class="p-2 mt-8 rounded-xl border border-gray-300 outline-none bg-transparent" type="email" {...register("email", { required: true })} placeholder="Email" />
 
-                                <input class="p-2 rounded-xl border border-gray-300  outline-none bg-transparent" type="password" name="password" placeholder="Password" />
+                                {errors.email && <span className='text-red-500 mt-1'>Email field is required</span>}
+
+                                <input class="p-2 rounded-xl border border-gray-300  outline-none bg-transparent" type="password" {...register("password", { required: true })} placeholder="Password" />
+                                {errors.password && <span className='text-red-500 mt-1'>Password field is required</span>}
 
                                 <button type='submit' class="bg-indigo-500 rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
                             </form>

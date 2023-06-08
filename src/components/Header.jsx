@@ -2,11 +2,18 @@ import React, { useEffect, useState } from 'react';
 import ActiveLink from './ActiveLink';
 import { AiOutlineBars } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../AuthProvider/AuthProvider';
 
 
 
 const Header = () => {
+    const { user, logOut } = useAuthContext()
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
     const links = <>
         <ActiveLink to='/'>Home</ActiveLink>
@@ -37,13 +44,21 @@ const Header = () => {
                     </div>
 
                     <div className="navbar-end space-x-3">
-                        <label className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://i.ibb.co/34GxQTD/1677149097978-01.jpg" className='object-cover object-top' />
-                            </div>
-                        </label>
+                        {
+                            user ? <>
+                                <label className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} className='object-cover object-top' />
+                                    </div>
+                                </label>
+                                <button onClick={handleLogout} className='py-2 px-4 rounded text-white text-lg bg-indigo-500 hover:bg-indigo-600'>Logout</button>
+                            </> : <>
+                                <Link to='/login' className='py-2 px-4 rounded text-white text-lg bg-indigo-500 hover:bg-indigo-600'>Login</Link>
+                            </>
+                        }
 
-                        <Link to='/login' className='py-2 px-4 rounded text-white text-lg bg-indigo-500 hover:bg-indigo-600'>Login</Link>
+
+
 
 
                     </div>
