@@ -8,6 +8,7 @@ import Signup from "../pages/Signup";
 import Success from "../pages/Success";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
+import ManageUsers from "../pages/ManageUsers";
 
 
 
@@ -39,8 +40,14 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/dashboard",
+        path: "dashboard",
         element: <PrivateRoute><Dashboard /></PrivateRoute>,
+        children: [
+            {
+                path: 'manageusers',
+                element: <ManageUsers></ManageUsers>
+            }
+        ]
     },
     {
         path: "/success",

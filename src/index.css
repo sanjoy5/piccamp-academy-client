@@ -10,3 +10,7 @@ body {
 .active {
     color: #4F46E5;
 }
+
+.drawer-side a {
+    background-color: transparent;
+}

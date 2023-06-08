@@ -38,7 +38,7 @@ const Header = () => {
                                 {links}
                             </ul>
                         </div>
-                        <a className=" text-2xl font-semibold">PicCamp</a>
+                        <a className=" text-2xl font-semibold"><span className='text-indigo-500'>Pic</span>Camp</a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 space-x-6 text-lg">
