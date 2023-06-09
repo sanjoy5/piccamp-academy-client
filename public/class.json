@@ -1,0 +1,90 @@
+[
+    {
+        "cname": "Digital Photography",
+        "image": "https://i.ibb.co/D4ChJLb/EDL233-Digital-Photography-1a.jpg",
+        "iname": "Sanjoy Sarker",
+        "email": "sanjoysarker340@gmail.com",
+        "seats": 50,
+        "price": 19.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Learn Photography",
+        "image": "https://i.ibb.co/h2wFYRm/depositphotos-12330856-stock-photo-woman-taking-a-photo.webp",
+        "iname": "John Doe",
+        "email": "john.doe@example.com",
+        "seats": 30,
+        "price": 29.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Photography for Beginner",
+        "image": "https://i.ibb.co/KKZ6Ws4/gabby-orcutt-snn-AEwp-Va-JE-unsplash.jpg",
+        "iname": "David Wilson",
+        "email": "david.wilson@example.com",
+        "seats": 20,
+        "price": 14.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Wildlife Photography",
+        "image": "https://i.ibb.co/BBGRG8z/Wildlife-Photographs-1.jpg",
+        "iname": "James Martinez",
+        "email": "james.martinez@example.com",
+        "seats": 10,
+        "price": 9.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Street Photography",
+        "image": "https://i.ibb.co/N9qzrMz/CS-2325-STREET-PHOTOGRAPHY-HEADER.jpg",
+        "iname": "James Martinez",
+        "email": "james.martinez@example.com",
+        "seats": 25,
+        "price": 24.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Black and White Photography",
+        "image": "https://i.ibb.co/ZKj5Zpt/THUMBNAIL-1.jpg",
+        "iname": "John Doe",
+        "email": "john.doe@example.com",
+        "seats": 15,
+        "price": 12.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Fashion Photography",
+        "image": "https://i.ibb.co/ynXrQn2/fashion-photography-featured.jpg",
+        "iname": "Robert Johnson",
+        "email": "robert.johnson@example.com",
+        "seats": 40,
+        "price": 17.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    },
+    {
+        "cname": "Travel Photography",
+        "image": "https://i.ibb.co/s1c4MYC/photo-1579504344957-c09070053c7e.jpg",
+        "iname": "Samayara Sweety",
+        "email": "sweety@gmail.com",
+        "seats": 5,
+        "price": 7.99,
+        "enrolled": 0,
+        "status": "Pending",
+        "feedback": "No feedback"
+    }
+]

@@ -5,7 +5,7 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 const MyClasses = () => {
-    const { user } = useAuthContext()
+    const { user, loading } = useAuthContext()
     const [axiosSecure] = useAxiosSecure()
 
     const { data: classes = [], refetch } = useQuery({
@@ -28,7 +28,8 @@ const MyClasses = () => {
 
             <div className="overflow-x-auto px-5 md:px-14 py-5">
                 {
-                    classes?.length === 0 ? <h2 className="text-2xl font-semibold p-5 mx-auto text-center">You have no classes yet</h2> :
+
+                    classes?.length === 0 && loading ? <h2 className="text-2xl font-semibold p-5 mx-auto text-center">You have no classes yet</h2> :
                         <table className="table">
                             {/* head */}
                             <thead>
