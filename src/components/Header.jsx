@@ -34,7 +34,7 @@ const Header = () => {
                             <label tabIndex={0} className=" lg:hidden">
                                 <AiOutlineBars className='text-2xl mr-3' />
                             </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-5 text-base shadow bg-base-100 rounded-box w-52 space-y-2">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-5 text-base shadow z-50 bg-base-100 rounded-box w-52 space-y-2">
                                 {links}
                             </ul>
                         </div>
@@ -59,9 +59,6 @@ const Header = () => {
                                 <Link to='/login' className='py-2 px-4 rounded text-white text-lg bg-indigo-500 hover:bg-indigo-600'>Login</Link>
                             </>
                         }
-
-
-
 
 
                     </div>

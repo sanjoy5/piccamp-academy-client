@@ -30,12 +30,12 @@ const ToggleMode = () => {
 
                         {/* sun icon */}
 
-                        <div className=" py-2 md:py-3 px-2 md:px-3 flex items-center justify-center rounded-tl-box rounded-bl-box bg-indigo-600 swap-on fill-current">
+                        <div className=" py-2 md:py-3 px-2 md:px-3  rounded-tl-box rounded-bl-box bg-indigo-600 swap-on fill-current">
                             <BsSun className=' text-white text-lg md:text-xl' />
                         </div>
 
                         {/* moon icon */}
-                        <div className=" py-2 md:py-3 px-2 md:px-3 flex items-center justify-center rounded-tl-box rounded-bl-box bg-indigo-600 swap-off fill-current">
+                        <div className=" py-2 md:py-3 px-2 md:px-3  rounded-tl-box rounded-bl-box bg-indigo-600 swap-off fill-current">
                             <BsMoon className=' text-white text-lg md:text-xl' />
                         </div>
                     </label>

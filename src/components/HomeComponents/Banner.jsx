@@ -18,7 +18,7 @@ const Banner = () => {
 
 
 
-        <div className='max-w-7xl mx-auto'>
+        <div className='max-w-7xl mx-auto z-0'>
             <div className="carousel w-full h-[600px]">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={img1} className="w-full object-cover rounded-xl" />

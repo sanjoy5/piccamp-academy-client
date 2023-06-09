@@ -9,6 +9,10 @@ import Success from "../pages/Success";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
 import ManageUsers from "../pages/ManageUsers";
+import AddClasses from "../pages/AddClasses";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import MyClasses from "../pages/MyClasses";
 
 
 
@@ -40,13 +44,21 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "dashboard",
+        path: "/dashboard",
         element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: 'manageusers',
-                element: <ManageUsers></ManageUsers>
-            }
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: 'addclass',
+                element: <InstructorRoute> <AddClasses></AddClasses></InstructorRoute>
+            },
+            {
+                path: 'myclasses',
+                element: <InstructorRoute> <MyClasses></MyClasses></InstructorRoute>
+            },
         ]
     },
     {

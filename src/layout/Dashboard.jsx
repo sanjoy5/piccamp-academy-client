@@ -21,7 +21,7 @@ const Dashboard = () => {
                     {/* Page content here */}
                     <ToggleMode />
                     <label htmlFor="my-drawer-2" className="btn text-white bg-indigo-500 hover:bg-indigo-600 drawer-button lg:hidden m-5"><FaBars className='text-xl' /></label>
-                    <div className="w-full px-5 md:px-14 py-8 md:py-16">
+                    <div className="w-full pb-6 md:pb-10">
                         <Outlet />
                     </div>
 
