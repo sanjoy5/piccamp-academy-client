@@ -67,7 +67,7 @@ const MyClasses = () => {
                                             <td>{cls.cname} </td>
                                             <td>{cls.seats}</td>
                                             <td>${cls.price}</td>
-                                            <td>{cls.status}</td>
+                                            <td className={cls?.status === 'Approve' ? 'text-green-600' : cls?.status === 'Deny' ? 'text-red-600' : 'text-indigo-600'}>{cls.status}</td>
                                             <td>{cls.enrolled}</td>
                                             <td>{cls.feedback}</td>
                                             <td>

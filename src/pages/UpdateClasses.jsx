@@ -48,17 +48,17 @@ const UpdateClasses = () => {
                             .then(res => res.json())
                             .then(data => {
                                 console.log(data);
-                                // if (data.modifiedCount > 0) {
-                                //     reset()
-                                //     Swal.fire({
-                                //         position: 'top-end',
-                                //         icon: 'success',
-                                //         title: 'Class Updated Successfully',
-                                //         showConfirmButton: false,
-                                //         timer: 1500
-                                //     })
-                                // }
-                                // navigate('/dashboard/myclasses')
+                                if (data.modifiedCount > 0) {
+                                    reset()
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Class Updated Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                                navigate('/dashboard/myclasses')
                             })
                     }
                 })
@@ -76,17 +76,17 @@ const UpdateClasses = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    //  if (data.modifiedCount > 0){
-                    //     reset()
-                    //     Swal.fire({
-                    //         position: 'top-end',
-                    //         icon: 'success',
-                    //         title: 'Class Updated Successfully',
-                    //         showConfirmButton: false,
-                    //         timer: 1500
-                    //     })
-                    // }
-                    // navigate('/dashboard/myclasses')
+                    if (data.modifiedCount > 0) {
+                        reset()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Class Updated Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                    navigate('/dashboard/myclasses')
                 })
         }
 
@@ -111,7 +111,7 @@ const UpdateClasses = () => {
                     </div>
 
                     <div className="mt-4">
-                        <label htmlFor="image" className="leading-7  ">Class Image<span className="text-indigo-500 text-lg"> *</span></label>
+                        <label htmlFor="image" className="leading-7  ">Class Image</label>
 
                         {updateData?.image && <div className='flex items-center gap-2 mb-2'>
                             <img src={updateData?.image} alt="Class Image" style={{ width: '50px' }} />
