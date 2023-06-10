@@ -3,11 +3,15 @@ import ActiveLink from './ActiveLink';
 import { AiOutlineBars } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../AuthProvider/AuthProvider';
+import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 
 
 
 const Header = () => {
     const { user, logOut } = useAuthContext()
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
 
     const handleLogout = () => {
         logOut()
@@ -20,8 +24,12 @@ const Header = () => {
         <ActiveLink to='/instructors'>Instructors</ActiveLink>
         <ActiveLink to='/classes'>Classes</ActiveLink>
         {
-            user &&
-            <ActiveLink to='/dashboard'>Dashboard</ActiveLink>
+            user && isAdmin ?
+                <ActiveLink to='/dashboard/manageusers'>Dashboard</ActiveLink>
+                : user && isInstructor ?
+                    <ActiveLink to='/dashboard/myclasses'>Dashboard</ActiveLink>
+                    : <ActiveLink to='dashboard/selectedclass'>Dashboard</ActiveLink>
+
         }
     </>
 
@@ -38,7 +46,7 @@ const Header = () => {
                                 {links}
                             </ul>
                         </div>
-                        <a className=" text-2xl font-semibold"><span className='text-indigo-500'>Pic</span>Camp</a>
+                        <Link to='/' className=" text-2xl font-semibold"><span className='text-indigo-500'>Pic</span>Camp</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 space-x-6 text-lg">

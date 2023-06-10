@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
-console.log(img_hosting_token);
+// console.log(img_hosting_token);
 
 const AddClasses = () => {
     const { user } = useAuthContext()
