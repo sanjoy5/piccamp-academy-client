@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const MyClasses = () => {
     const { user, loading } = useAuthContext()
     const [axiosSecure] = useAxiosSecure()
+
 
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['instructorclasses', user?.email],
@@ -15,6 +17,8 @@ const MyClasses = () => {
             return res.data
         }
     })
+
+
 
 
     return (
@@ -67,7 +71,7 @@ const MyClasses = () => {
                                             <td>{cls.enrolled}</td>
                                             <td>{cls.feedback}</td>
                                             <td>
-                                                <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white" >Update</button>
+                                                <Link to={`/dashboard/updateclasses/${cls._id}`} className="btn bg-indigo-500 hover:bg-indigo-600 text-white" >Update</Link>
                                             </td>
                                         </tr>
                                     ))

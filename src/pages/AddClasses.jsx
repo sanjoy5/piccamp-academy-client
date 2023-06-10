@@ -5,12 +5,12 @@ import { useAuthContext } from '../AuthProvider/AuthProvider';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
+
 const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN
 console.log(img_hosting_token);
 
 const AddClasses = () => {
     const { user } = useAuthContext()
-    const [error, setError] = useState('')
     const [axiosSecure] = useAxiosSecure()
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
@@ -56,10 +56,6 @@ const AddClasses = () => {
             </Helmet>
 
             <h2 className="text-2xl md:text-4xl font-bold text-center mb-5 bg-base-200 py-6"><span className="text-indigo-500">Add</span> a Class</h2>
-
-
-
-
             <div className="px-5 md:px-14 py-10 mx-auto flex">
                 <form onSubmit={handleSubmit(onSubmit)} className=" lg:3/4 xl:w-1/2 rounded-lg p-8 border flex flex-col md:mx-auto w-full z-10 shadow-lg">
 
@@ -114,12 +110,10 @@ const AddClasses = () => {
 
 
 
-                    <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5">Add Class</button>
+                    <button type='submit' className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-5">Add Class</button>
 
                 </form>
             </div>
-
-
 
         </div>
     );
