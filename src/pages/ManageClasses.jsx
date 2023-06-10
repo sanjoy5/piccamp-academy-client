@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import { FaTimes } from 'react-icons/fa';
+
 
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure()
+    const [classId, setClassId] = useState(null)
+
+
 
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['manageclasses'],
@@ -16,6 +21,8 @@ const ManageClasses = () => {
     })
 
     // console.log(classes, '$$');
+
+    // Handle Approve 
 
     const handleApprove = cls => {
         Swal.fire({
@@ -45,6 +52,9 @@ const ManageClasses = () => {
         })
     }
 
+
+    // Handle Deny 
+
     const handleDeny = cls => {
         Swal.fire({
             title: 'Are you sure?',
@@ -71,6 +81,36 @@ const ManageClasses = () => {
 
             }
         })
+    }
+
+    // Handle Feedback 
+
+    const handleFeedback = cls => {
+        setClassId(cls?._id)
+    }
+
+    const handleForm = e => {
+        e.preventDefault()
+        const form = e.target;
+        const feedback = form.feedback.value;
+
+        console.log(feedback, classId);
+
+        axiosSecure.patch(`/feedbackclass/${classId}`, { feedback })
+            .then(res => {
+                console.log(res.data);
+                form.reset()
+                if (res.data.modifiedCount) {
+                    refetch()
+                    Swal.fire(
+                        'Done!',
+                        `Feedback has been send successfully !`,
+                        'success'
+                    )
+                }
+
+            })
+
     }
 
     return (
@@ -122,7 +162,7 @@ const ManageClasses = () => {
                                     <td className='space-x-2'>
                                         <button onClick={() => handleApprove(cls)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" disabled={cls.status === 'Approve' || cls.status === 'Deny' ? true : false} >Approve</button>
                                         <button onClick={() => handleDeny(cls)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" disabled={cls.status === 'Approve' || cls.status === 'Deny' ? true : false} >Deny</button>
-                                        <button className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Feedback</button>
+                                        <label onClick={() => handleFeedback(cls)} htmlFor="my_modal_6" className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Feedback</label>
                                     </td>
                                 </tr>
                             ))
@@ -134,6 +174,30 @@ const ManageClasses = () => {
 
                 </table>
 
+            </div>
+
+            {/* The button to open modal */}
+
+
+            {/* Put this part before </body> tag */}
+            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
+                    <div className="modal-action absolute right-3 -top-3">
+                        <label htmlFor="my_modal_6" className="py-2 px-2 bg-base-200 rounded-full cursor-pointer text-xl"><FaTimes /></label>
+                    </div>
+                    <h3 className="font-bold text-2xl text-center text-indigo-500 mb-5">Feedback</h3>
+
+                    <form onSubmit={handleForm}>
+                        <div class="relative mb-4">
+                            <textarea id="feedback" name="feedback" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        </div>
+                        <div className="text-center">
+                            <button type='submit' class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send Feedback</button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
 
         </div>

@@ -28,13 +28,9 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, Make Admin !'
         }).then((result) => {
             if (result.isConfirmed) {
-
-                fetch(`http://127.0.0.1:5000/users/admin/${user._id}`, {
-                    method: 'PATCH'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.modifiedCount) {
+                axiosSecure.patch(`/users/admin/${user._id}`)
+                    .then(res => {
+                        if (res.data.modifiedCount) {
                             refetch()
                             Swal.fire(
                                 'Done!',
@@ -63,13 +59,9 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, Make Instructor !'
         }).then((result) => {
             if (result.isConfirmed) {
-
-                fetch(`http://127.0.0.1:5000/users/instructor/${user._id}`, {
-                    method: 'PATCH'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.modifiedCount) {
+                axiosSecure.patch(`/users/instructor/${user._id}`)
+                    .then(res => {
+                        if (res.data.modifiedCount) {
                             refetch()
 
                             Swal.fire(
