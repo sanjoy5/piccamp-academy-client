@@ -20,14 +20,14 @@ const Dashboard = () => {
                 <div className="drawer-content">
                     {/* Page content here */}
                     <ToggleMode />
-                    <label htmlFor="my-drawer-2" className="btn text-white bg-indigo-500 hover:bg-indigo-600 drawer-button lg:hidden m-5"><FaBars className='text-xl' /></label>
+                    <label htmlhtmlFor="my-drawer-2" className="btn text-white bg-indigo-500 hover:bg-indigo-600 drawer-button lg:hidden m-5"><FaBars className='text-xl' /></label>
                     <div className="w-full pb-6 md:pb-10">
                         <Outlet />
                     </div>
 
                 </div>
                 <div className="drawer-side bg-base-200 z-50">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                    <label htmlhtmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full text-base-content">
                         {/* Sidebar content here */}
                         <Link to='/' className='md:px-5 md:py-5 text-2xl font-bold'><span className="text-indigo-500">PicCamp</span> Academy</Link>

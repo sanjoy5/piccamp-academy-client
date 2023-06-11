@@ -16,9 +16,9 @@ const PopularClasses = ({ popularClassesData }) => {
             <div className="flex flex-wrap">
 
                 {
-                    popularClassesData?.map(data => (
+                    popularClassesData?.map((data, idx) => (
 
-                        <div className="p-4 md:w-1/2 lg:w-1/3 sm:mb-0 mb-6">
+                        <div key={idx} className="p-4 md:w-1/2 lg:w-1/3 sm:mb-0 mb-6">
                             <div className="rounded-lg h-64 overflow-hidden">
                                 <img alt="content" className="object-cover object-center h-full w-full" src={data.image} />
                             </div>
@@ -30,12 +30,12 @@ const PopularClasses = ({ popularClassesData }) => {
                                 Email : {data.email}
                             </p>
                             <div className="flex gap-3 items-center">
-                                <p className="text-base leading-relaxed mt-1 flex items-center gap-2">
+                                <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
                                     <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Price : ${data.price}
-                                </p>
-                                <p className="text-base leading-relaxed mt-1 flex items-center gap-2">
+                                </div>
+                                <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
                                     <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Available Seats : {data.seats}
-                                </p>
+                                </div>
 
                             </div>
                             <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Select</button>

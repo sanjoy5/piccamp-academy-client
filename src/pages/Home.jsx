@@ -5,6 +5,8 @@ import PopularClasses from '../components/HomeComponents/PopularClasses';
 import { useLoaderData } from 'react-router-dom';
 import PopularInstructors from '../components/HomeComponents/PopularInstructors';
 import Statistic from '../components/HomeComponents/Statistic';
+import Tesitominal from '../components/HomeComponents/Tesitominal';
+import Contact from '../components/HomeComponents/Contact';
 
 const Home = () => {
 
@@ -19,6 +21,8 @@ const Home = () => {
             <PopularClasses popularClassesData={popularClassesData} ></PopularClasses>
             <PopularInstructors></PopularInstructors>
             <Statistic></Statistic>
+            <Tesitominal></Tesitominal>
+            <Contact></Contact>
         </div>
     );
 };

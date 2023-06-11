@@ -1,79 +1,115 @@
 import React from 'react';
 import { FaArrowRight, FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className=" body-font mt-16 bg-base-200">
-            <div className="max-w-7xl px-5 pt-24 mx-auto">
-                <div className="flex flex-wrap md:text-left text-center order-first">
+
+        <footer className="bg-base-200 body-font mt-10">
+            <div className="max-w-7xl px-5 pt-24 pb-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+
+                <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+                    <Link to='/' className="flex title-font font-medium items-center md:justify-start justify-center ">
+                        <img src="https://i.ibb.co/CQVKS6y/dslr-camera.png" className='h-10 w-10' alt="" />
+                        <span className="ml-3 text-2xl font-semibold">PicCamp</span>
+                    </Link>
+                    <p className="mb-3 mt-4">Address: 123 ABC Street, Dhaka 1234, Bangladesh</p>
+                    <p className="">Hotline: +8801XXXXXXXXX</p>
+                </div>
+                <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font  tracking-widest text-2xl md:text-3xl font-bold mb-3">PicCamp Academy</h2>
-
-                        <p className="mb-3 ">Address: 123 ABC Street, Dhaka 1234, Bangladesh</p>
-                        <p className="mb-4 ">Hotline: +8801XXXXXXXXX</p>
-
-                        {/* <h2 className="title-font font-medium  tracking-widest  mb-3 uppercase">Follow Us On</h2> */}
-                        <span className=" flex space-x-3 itmes-center justify-center md:justify-start  mb-10">
-                            <FaFacebookF className='cursor-pointer text-lg hover:text-indigo-500' />
-                            <FaInstagram className='cursor-pointer text-lg hover:text-indigo-500' />
-                            <FaTwitter className='cursor-pointer text-lg hover:text-indigo-500' />
-                            <FaLinkedinIn className='cursor-pointer text-lg hover:text-indigo-500' />
-                        </span>
-
-                    </div>
-                    <div className="lg:w-1/4 md:w-1/2 w-full px-4 lg:grid lg:justify-items-center">
-                        <h2 className="title-font font-medium  tracking-widest uppercase mb-3">Categories</h2>
-                        <nav className="list-none mb-10 space-y-2">
+                        <h2 className="title-font font-medium  tracking-widest text-sm mb-3 uppercase">Pages</h2>
+                        <nav className="list-none mb-10">
                             <li>
-                                <a className=" hover:text-gray-800">Instructors</a>
+                                <a className="text-gray-600 hover:text-gray-800">Classes</a>
                             </li>
                             <li>
-                                <a className=" hover:text-gray-800">Classes</a>
+                                <a className="text-gray-600 hover:text-gray-800">Instructor</a>
                             </li>
                             <li>
-                                <a className=" hover:text-gray-800">Dashboard</a>
+                                <a className="text-gray-600 hover:text-gray-800">About Us</a>
                             </li>
                             <li>
-                                <a className=" hover:text-gray-800">About Us</a>
-                            </li>
-                        </nav>
-                    </div>
-                    <div className="lg:w-1/4 md:w-1/2 w-full px-4 lg:grid lg:justify-items-center">
-                        <h2 className="title-font font-medium  tracking-widest uppercase mb-3">Quick Links</h2>
-                        <nav className="list-none mb-10 space-y-2">
-                            <li>
-                                <a className=" hover:text-gray-800">Our Policy</a>
-                            </li>
-                            <li>
-                                <a className=" hover:text-gray-800">Quick Delivery</a>
-                            </li>
-
-                            <li>
-                                <a className=" hover:text-gray-800">About Us</a>
-                            </li>
-                            <li>
-                                <a className=" hover:text-gray-800">Contact Us</a>
+                                <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
                             </li>
                         </nav>
                     </div>
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-medium  tracking-widest  mb-3">SUBSCRIBE</h2>
-                        <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
-                            <div className="relative max-w-40 sm:w-auto xl:mr-2 lg:mr-0 sm:mr-2 mr-2">
+                        <h2 className="title-font font-medium  tracking-widest text-sm mb-3 uppercase">Quick Links</h2>
+                        <nav className="list-none mb-10">
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Faq</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Service</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Feedback</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Privacy Policy</a>
+                            </li>
 
-                                <input type="text" id="footer-field" name="footer-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-base-200 bg-transparent focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder='Email' />
-                            </div>
-                            <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-3 px-4 focus:outline-none hover:bg-indigo-600 rounded"><FaArrowRight className='text-lg' /></button>
-                        </div>
-                        <p className="text-gray-500 text-sm mt-5 md:text-left text-center">
-                            Subscribe to our newsletter for get our latest news, offers, and updates!
-                        </p>
+                        </nav>
+                    </div>
+                    <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+                        <h2 className="title-font font-medium  tracking-widest text-sm mb-3">CATEGORIES</h2>
+                        <nav className="list-none mb-10">
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Portrait</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Wildlife</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Street</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Landscape</a>
+                            </li>
+                        </nav>
+                    </div>
+                    <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+                        <h2 className="title-font font-medium  tracking-widest text-sm mb-3">LINKS</h2>
+                        <nav className="list-none mb-10">
+
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">History</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Payemnts</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Students</a>
+                            </li>
+                            <li>
+                                <a className="text-gray-600 hover:text-gray-800">Dashboard</a>
+                            </li>
+
+                        </nav>
                     </div>
                 </div>
             </div>
-
-            <p className="text-center py-10">Sanjoy Sarker &copy; 2023 - All Rights Reserved</p>
-
+            <div className="max-w-7xl mx-auto">
+                <div className="container mx-auto py-10 border-t px-5 flex flex-wrap flex-col sm:flex-row">
+                    <p className="text-gray-500 text-sm text-center sm:text-left">Sanjoy Sarker &copy; 2023 | All Rights Reserved
+                    </p>
+                    <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start cursor-pointer">
+                        <a className="text-gray-500">
+                            <FaFacebookF />
+                        </a>
+                        <a className="ml-3 text-gray-500">
+                            <FaLinkedinIn />
+                        </a>
+                        <a className="ml-3 text-gray-500">
+                            <FaTwitter />
+                        </a>
+                        <a className="ml-3 text-gray-500">
+                            <FaYoutube />
+                        </a>
+                    </span>
+                </div>
+            </div>
         </footer>
     );
 };

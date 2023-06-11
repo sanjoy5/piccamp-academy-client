@@ -164,7 +164,7 @@ const ManageClasses = () => {
                                     <td className='space-x-1 space-y-1'>
                                         <button onClick={() => handleApprove(cls)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" disabled={cls.status === 'Approve' || cls.status === 'Deny' ? true : false} >Approve</button>
                                         <button onClick={() => handleDeny(cls)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" disabled={cls.status === 'Approve' || cls.status === 'Deny' ? true : false} >Deny</button>
-                                        <label onClick={() => handleFeedback(cls)} htmlFor="my_modal_6" className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Feedback</label>
+                                        <label onClick={() => handleFeedback(cls)} htmlhtmlFor="my_modal_6" className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Feedback</label>
                                     </td>
                                 </tr>
                             ))
@@ -186,7 +186,7 @@ const ManageClasses = () => {
             <div className="modal">
                 <div className="modal-box relative">
                     <div className="modal-action absolute right-3 -top-3">
-                        <label htmlFor="my_modal_6" className="py-2 px-2 bg-base-200 rounded-full cursor-pointer text-xl"><FaTimes /></label>
+                        <label htmlhtmlFor="my_modal_6" className="py-2 px-2 bg-base-200 rounded-full cursor-pointer text-xl"><FaTimes /></label>
                     </div>
                     <h3 className="font-bold text-2xl text-center text-indigo-500 mb-5">Feedback</h3>
 
