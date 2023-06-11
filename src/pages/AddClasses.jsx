@@ -28,7 +28,7 @@ const AddClasses = () => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url
                     const { cname, iname, email, seats, price } = data
-                    const newClass = { cname, image: imgURL, iname, email, seats: parseInt(seats), price: parseFloat(price), enrolled: 0, status: 'Pending', feedback: 'No feedback' }
+                    const newClass = { cname, image: imgURL, iname, email, seats: parseInt(seats), price: parseFloat(price), enrolled: 0, status: 'Pending', feedback: 'No feedback', iimage: user?.photoURL }
                     // console.log(newClass);
                     axiosSecure.post('/classes', newClass)
                         .then(data => {
@@ -62,13 +62,13 @@ const AddClasses = () => {
 
                     <div className="">
                         <label htmlFor="cname" className="leading-7  ">Class Name<span className="text-indigo-500 text-lg"> *</span></label>
-                        <input type="text" id="cname" {...register("cname", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                        <input type="text" id="cname" {...register("cname", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         {errors.cname && <p className='text-red-500 mt-1'>Class Name field is required</p>}
                     </div>
 
                     <div className="mt-4">
                         <label htmlFor="image" className="leading-7  ">Class Image<span className="text-indigo-500 text-lg"> *</span></label>
-                        <input type="file" id='image' {...register("image", { required: true })} className="file-input file-input-bordered w-full rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none leading-8 transition-colors duration-200 ease-in-out" />
+                        <input type="file" id='image' {...register("image", { required: true })} className="file-input file-input-bordered w-full rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none leading-8 transition-colors duration-200 ease-in-out" />
                         {errors.image && <p className='text-red-500 mt-1'>Class Image field is required</p>}
                     </div>
 
@@ -77,12 +77,12 @@ const AddClasses = () => {
                     <div className="flex items-center flex-col md:flex-row gap-4 mt-4">
                         <div className="w-full md:w-1/2">
                             <label htmlFor="iname" className="leading-7  ">Instructor Name<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="text" id="iname" {...register("iname", { required: true })} defaultValue={user?.displayName} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                            <input type="text" id="iname" {...register("iname", { required: true })} defaultValue={user?.displayName} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
                         </div>
 
                         <div className=" w-full md:w-1/2">
                             <label htmlFor="email" className="leading-7  ">Instructor Email<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="email" id="email" {...register("email", { required: true })} defaultValue={user?.email} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                            <input type="email" id="email" {...register("email", { required: true })} defaultValue={user?.email} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
                         </div>
                     </div>
 
@@ -94,12 +94,12 @@ const AddClasses = () => {
                     <div className="flex items-center flex-col md:flex-row gap-4 mt-4">
                         <div className=" w-full md:w-1/2">
                             <label htmlFor="seats" className="leading-7  ">Available Seats<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="number" id="seats" {...register("seats", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="number" id="seats" {...register("seats", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className="w-full md:w-1/2">
                             <label htmlFor="price" className="leading-7  ">Price<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="number" id="price" {...register("price", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="number" id="price" {...register("price", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                     </div>

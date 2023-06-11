@@ -84,12 +84,12 @@ const Login = () => {
                             }
 
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-                                <input className="p-2 mt-8 rounded-xl border border-gray-300 outline-none bg-transparent" type="email" {...register("email", { required: true })} placeholder="Email" />
+                                <input className="p-2 mt-8 rounded-xl border border-base-200 outline-none bg-transparent" type="email" {...register("email", { required: true })} placeholder="Email" />
 
                                 {errors.email && <span className='text-red-500 mt-1'>Email field is required</span>}
 
                                 <div className="relative">
-                                    <input className="p-2 rounded-xl border border-gray-300 outline-none bg-transparent  w-full" type={show ? 'text' : 'password'} {...register("password", { required: true })} placeholder="Password" />
+                                    <input className="p-2 rounded-xl border border-base-200 outline-none bg-transparent  w-full" type={show ? 'text' : 'password'} {...register("password", { required: true })} placeholder="Password" />
 
                                     {
                                         show ? <BsEyeSlash onClick={() => setShow(!show)} className=" absolute top-1/2 right-3 -translate-y-1/2 text-lg cursor-pointer" />
@@ -103,9 +103,9 @@ const Login = () => {
                             </form>
 
                             <div className="mt-6 grid grid-cols-3 items-center text-gray-400">
-                                <hr className="border-gray-400" />
+                                <hr className="border-base-200" />
                                 <p className="text-center text-sm">OR</p>
-                                <hr className="border-gray-400" />
+                                <hr className="border-base-200" />
                             </div>
 
                             <button onClick={handleLoginWithGoogle} className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">

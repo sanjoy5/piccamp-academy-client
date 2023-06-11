@@ -191,11 +191,11 @@ const ManageClasses = () => {
                     <h3 className="font-bold text-2xl text-center text-indigo-500 mb-5">Feedback</h3>
 
                     <form onSubmit={handleForm}>
-                        <div class="relative mb-4">
-                            <textarea id="feedback" name="feedback" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                        <div className="relative mb-4">
+                            <textarea id="feedback" name="feedback" className="w-full bg-white rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div className="text-center">
-                            <button type='submit' class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send Feedback</button>
+                            <button type='submit' className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send Feedback</button>
                         </div>
                     </form>
 

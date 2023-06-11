@@ -106,7 +106,7 @@ const UpdateClasses = () => {
 
                     <div className="">
                         <label htmlFor="cname" className="leading-7  ">Class Name<span className="text-indigo-500 text-lg"> *</span></label>
-                        <input type="text" id="cname" defaultValue={updateData?.cname} {...register("cname", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                        <input type="text" id="cname" defaultValue={updateData?.cname} {...register("cname", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         {errors.cname && <p className='text-red-500 mt-1'>Class Name field is required</p>}
                     </div>
 
@@ -118,7 +118,7 @@ const UpdateClasses = () => {
                             <span className='text-indigo-500 text-sm'>{updateData?.image}</span>
                         </div>}
 
-                        <input type="file" id='image' {...register("image")} className="file-input file-input-bordered w-full rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none leading-8 transition-colors duration-200 ease-in-out" />
+                        <input type="file" id='image' {...register("image")} className="file-input file-input-bordered w-full rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
 
 
@@ -126,12 +126,12 @@ const UpdateClasses = () => {
                     <div className="flex items-center flex-col md:flex-row gap-4 mt-4">
                         <div className="w-full md:w-1/2">
                             <label htmlFor="iname" className="leading-7  ">Instructor Name<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="text" id="iname" defaultValue={user?.displayName} {...register("iname", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                            <input type="text" id="iname" defaultValue={user?.displayName} {...register("iname", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
                         </div>
 
                         <div className=" w-full md:w-1/2">
                             <label htmlFor="email" className="leading-7  ">Instructor Email<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="email" id="email" defaultValue={user?.email} {...register("email", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                            <input type="email" id="email" defaultValue={user?.email} {...register("email", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
                         </div>
                     </div>
 
@@ -143,12 +143,12 @@ const UpdateClasses = () => {
                     <div className="flex items-center flex-col md:flex-row gap-4 mt-4">
                         <div className=" w-full md:w-1/2">
                             <label htmlFor="seats" className="leading-7  ">Available Seats<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="number" id="seats" defaultValue={updateData?.seats} {...register("seats", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="number" id="seats" defaultValue={updateData?.seats} {...register("seats", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                         <div className="w-full md:w-1/2">
                             <label htmlFor="price" className="leading-7  ">Price<span className="text-indigo-500 text-lg"> *</span></label>
-                            <input type="number" id="price" defaultValue={updateData?.price} {...register("price", { required: true })} className="w-full bg-transparent rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input type="number" id="price" defaultValue={updateData?.price} {...register("price", { required: true })} className="w-full bg-transparent rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
 
                     </div>

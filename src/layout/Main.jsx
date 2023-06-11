@@ -11,7 +11,7 @@ const Main = () => {
         <>
             <Header></Header>
             <div>{navigation.state === 'loading' && 'Loading....'}</div>
-            <main className='max-w-7xl mx-auto px-4 md:px-2'>
+            <main className='max-w-7xl mx-auto px-4 md:px-0'>
                 <ToggleMode />
                 <Outlet></Outlet>
             </main>

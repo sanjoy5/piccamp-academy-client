@@ -19,6 +19,7 @@ import UpdateClasses from "../pages/UpdateClasses";
 
 
 const router = createBrowserRouter([
+
     {
         path: "/",
         element: <Main />,
@@ -26,15 +27,17 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                loader: () => fetch('http://127.0.0.1:5000/classes')
+                loader: () => fetch('http://127.0.0.1:5000/popularclasses')
             },
             {
                 path: "/instructors",
                 element: <Instructors />,
+                loader: () => fetch('http://127.0.0.1:5000/instructors')
             },
             {
                 path: "/classes",
                 element: <Classes />,
+                loader: () => fetch('http://127.0.0.1:5000/classes')
             },
             {
                 path: "/login",
