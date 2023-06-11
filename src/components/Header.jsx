@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
 import useInstructor from '../hooks/useInstructor';
+import useStudent from '../hooks/useStudent';
 
 
 
@@ -12,6 +13,7 @@ const Header = () => {
     const { user, logOut } = useAuthContext()
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
+    const [isStudent] = useStudent()
 
     const handleLogout = () => {
         logOut()
@@ -23,14 +25,17 @@ const Header = () => {
         <ActiveLink to='/'>Home</ActiveLink>
         <ActiveLink to='/instructors'>Instructors</ActiveLink>
         <ActiveLink to='/classes'>Classes</ActiveLink>
-        {
-            user && isAdmin ?
-                <ActiveLink to='/dashboard/manageusers'>Dashboard</ActiveLink>
-                : user && isInstructor ?
-                    <ActiveLink to='/dashboard/myclasses'>Dashboard</ActiveLink>
-                    : <ActiveLink to='dashboard/selectedclass'>Dashboard</ActiveLink>
 
+        {
+            isAdmin && <ActiveLink to='/dashboard/manageusers'>Dashboard</ActiveLink>
         }
+        {
+            isInstructor && <ActiveLink to='/dashboard/myclasses'>Dashboard</ActiveLink>
+        }
+        {
+            isStudent && <ActiveLink to={`dashboard/selectedclasses/${user?.email}`}>Dashboard</ActiveLink>
+        }
+
     </>
 
     return (

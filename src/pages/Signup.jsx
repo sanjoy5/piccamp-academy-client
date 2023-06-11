@@ -114,17 +114,17 @@ const Signup = () => {
 
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
 
-                                <input className="p-2 mt-8 rounded-xl border border-base-200 outline-none bg-transparent" {...register("name", { required: true })} type="text" placeholder="Name" />
+                                <input className="p-2 mt-8 rounded-xl border border-gray-400 outline-none bg-transparent" {...register("name", { required: true })} type="text" placeholder="Name" />
                                 {errors.name && <span className='text-red-500 '>Name field is required</span>}
 
-                                <input className="p-2  rounded-xl border border-base-200 outline-none bg-transparent" type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" />
+                                <input className="p-2  rounded-xl border border-gray-400 outline-none bg-transparent" type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" />
                                 {errors.photoURL && <span className='text-red-500 '>Photo URL field is required</span>}
 
 
-                                <input className="p-2  rounded-xl border border-base-200 outline-none bg-transparent" type="email"  {...register("email", { required: true })} placeholder="Email" />
+                                <input className="p-2  rounded-xl border border-gray-400 outline-none bg-transparent" type="email"  {...register("email", { required: true })} placeholder="Email" />
                                 {errors.email && <span className='text-red-500 '>Email field is required</span>}
 
-                                <input className="p-2 rounded-xl border border-base-200 outline-none bg-transparent" type="password" {...register("password", {
+                                <input className="p-2 rounded-xl border border-gray-400 outline-none bg-transparent" type="password" {...register("password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 20,
@@ -137,7 +137,7 @@ const Signup = () => {
                                 </p>}
 
                                 {/* TODO: Confirm password not work  */}
-                                <input className="p-2 rounded-xl border border-base-200 outline-none bg-transparent" type="password" {...register("confirmpassword", { required: true })} placeholder="Confirm Password" />
+                                <input className="p-2 rounded-xl border border-gray-400 outline-none bg-transparent" type="password" {...register("confirmpassword", { required: true })} placeholder="Confirm Password" />
                                 {errors.email && <span className='text-red-500 '>Confirm Password field is required</span>}
                                 {errors.password !== errors.confirmpassword && <span className='text-red-500 '>The password and confirm password fields must match</span>}
 
@@ -146,9 +146,9 @@ const Signup = () => {
                             </form>
 
                             <div className="mt-6 grid grid-cols-3 items-center text-gray-400">
-                                <hr className="border-base-200" />
+                                <hr className="border-gray-400" />
                                 <p className="text-center text-sm">OR</p>
-                                <hr className="border-base-200" />
+                                <hr className="border-gray-400" />
                             </div>
 
                             <button onClick={handleLoginWithGoogle} className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center hover:scale-105 duration-300 text-indigo-500">

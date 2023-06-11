@@ -18,7 +18,7 @@ const MyClasses = () => {
         }
     })
 
-    console.log(classes, '$$$');
+    // console.log(classes, '$$$');
 
 
     return (

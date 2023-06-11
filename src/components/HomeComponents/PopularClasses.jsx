@@ -1,8 +1,68 @@
-import React from 'react';
-import { FaUserTie } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { useAuthContext } from '../../AuthProvider/AuthProvider';
+import useUsers from '../../hooks/useUsers';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const PopularClasses = ({ popularClassesData }) => {
-    console.log(popularClassesData);
+    // console.log(popularClassesData);
+
+    const navigate = useNavigate()
+    const { user } = useAuthContext()
+    const [allusers] = useUsers()
+    const loggedUser = allusers.find(us => us?.email === user?.email)
+    // console.log(loggedUser, 'Logged User')
+
+
+    const handleSelect = data => {
+        if (user) {
+            data.sname = user?.displayName
+            data.semail = user?.email
+            data.simage = user?.photoURL
+
+            // console.log('data : ', data);
+
+            fetch('http://127.0.0.1:5000/selectedclass', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    if (data.insertedId) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Class Selected Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+
+
+        } else {
+            Swal.fire({
+                title: 'Oppps!',
+                text: "Log in before selecting the course!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login')
+                }
+            })
+        }
+
+    }
+
+
     return (
         <div className='pt-16 md:pt-24 pb-10 px-2'>
             <div className="flex flex-col text-center w-full mb-20">
@@ -13,32 +73,40 @@ const PopularClasses = ({ popularClassesData }) => {
             </div>
 
 
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
 
                 {
                     popularClassesData?.map((data, idx) => (
 
-                        <div key={idx} className="p-4 md:w-1/2 lg:w-1/3 sm:mb-0 mb-6">
+                        <div key={idx} className={data?.seats === 0 ? "bg-red-100" : ""}>
                             <div className="rounded-lg h-64 overflow-hidden">
                                 <img alt="content" className="object-cover object-center h-full w-full" src={data.image} />
                             </div>
-                            <h2 className="text-xl font-medium title-font mt-5">{data.cname}</h2>
-                            <p className="text-base font-medium leading-relaxed mt-2">
-                                Instructor : {data.iname}
-                            </p>
-                            <p className="text-base leading-relaxed mt-1">
-                                Email : {data.email}
-                            </p>
-                            <div className="flex gap-3 items-center">
-                                <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
-                                    <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Price : ${data.price}
-                                </div>
-                                <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
-                                    <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Available Seats : {data.seats}
+                            <div className="px-5 pb-5">
+                                <h2 className="text-xl font-medium title-font mt-5">{data.cname}</h2>
+                                <p className="text-base font-medium leading-relaxed mt-2">
+                                    Instructor : {data.iname}
+                                </p>
+                                <p className="text-base leading-relaxed mt-1">
+                                    Email : {data.email}
+                                </p>
+                                <div className="flex gap-3 items-center">
+                                    <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
+                                        <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Price : ${data.price}
+                                    </div>
+                                    <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
+                                        <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Available Seats : {data.seats}
+                                    </div>
+
                                 </div>
 
+                                {
+                                    data?.seats === 0 || loggedUser?.role === 'admin' || loggedUser?.role === 'instructor' ?
+                                        <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3" disabled>Select</button>
+                                        : <button onClick={() => handleSelect(data)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Select</button>
+                                }
+
                             </div>
-                            <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Select</button>
                         </div>
                     ))
                 }
