@@ -2,15 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 
 const useClasses = () => {
 
-    const { data: classes = [], isLoading: loading } = useQuery({
-        queryFn: ['classes'],
+    const { data: classes = [], refetch } = useQuery({
+        queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('/classes')
+            const res = await fetch('http://127.0.0.1:5000/classes')
             return res.json()
         }
     })
 
-    return [classes, loading]
+    return [classes, refetch]
+
 };
 
 export default useClasses;

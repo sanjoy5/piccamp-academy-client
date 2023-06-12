@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBNV0KaLS8lX3jsArs9pXqFa1y8clZki_o",
-    authDomain: "pic-camp-academy.firebaseapp.com",
-    projectId: "pic-camp-academy",
-    storageBucket: "pic-camp-academy.appspot.com",
-    messagingSenderId: "394333448188",
-    appId: "1:394333448188:web:53657aea58feb8fe5f3479"
+    apiKey: import.meta.env.VITE_APIKEY,
+    authDomain: import.meta.env.VITE_AUTHDOMAIN,
+    projectId: import.meta.env.VITE_PROJECTID,
+    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

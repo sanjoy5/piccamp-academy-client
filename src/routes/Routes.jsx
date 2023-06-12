@@ -17,6 +17,7 @@ import ManageClasses from "../pages/ManageClasses";
 import UpdateClasses from "../pages/UpdateClasses";
 import SelectedClasses from "../pages/SelectedClasses";
 import StudentRoute from "./StudentRoute";
+import Payment from "../pages/Payment";
 
 
 
@@ -38,8 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/classes",
-                element: <Classes />,
-                loader: () => fetch('http://127.0.0.1:5000/classes')
+                element: <Classes />
             },
             {
                 path: "/login",
@@ -77,8 +77,12 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://127.0.0.1:5000/updateclasses/${params.id}`)
             },
             {
-                path: 'selectedclasses/:email',
-                element: <StudentRoute><SelectedClasses></SelectedClasses></StudentRoute>
+                path: 'selectedclasses',
+                element: <SelectedClasses></SelectedClasses>
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment></Payment>
             },
 
         ]

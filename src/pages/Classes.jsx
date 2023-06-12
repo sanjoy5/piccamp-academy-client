@@ -1,36 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HeaderBanner from '../components/HeaderBanner';
-import { useLoaderData, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 import useUsers from '../hooks/useUsers';
 import Swal from 'sweetalert2'
+import useAxiosSecure from '../hooks/useAxiosSecure';
+import useClasses from '../hooks/useClasses';
 
 const Classes = () => {
-    const classes = useLoaderData()
 
-    const navigate = useNavigate()
+    const [classes] = useClasses()
+    const [axiosSecure] = useAxiosSecure()
     const { user } = useAuthContext()
     const [allusers] = useUsers()
     const loggedUser = allusers.find(us => us?.email === user?.email)
 
-
+    const token = localStorage.getItem('token')
     const handleSelect = cls => {
 
         if (user) {
+            cls.clsId = cls?._id
             cls.sname = user?.displayName
             cls.semail = user?.email
             cls.simage = user?.photoURL
 
+            console.log(cls, 'cls');
+
             fetch('http://127.0.0.1:5000/selectedclass', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    authorization: `bearer ${token}`
                 },
                 body: JSON.stringify(cls)
             })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
+                    console.log(data);
                     if (data.insertedId) {
                         Swal.fire({
                             position: 'top-end',
@@ -41,25 +45,7 @@ const Classes = () => {
                         })
                     }
                 })
-
-        } else {
-            Swal.fire({
-                title: 'Oppps!',
-                text: "Log in before selecting the course!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Login'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/login')
-                } else {
-                    setDisabled(true)
-                }
-            })
         }
-
     }
 
     return (
@@ -90,9 +76,9 @@ const Classes = () => {
 
                             </div>
                             {
-                                cls?.seats === 0 || loggedUser?.role === 'admin' || loggedUser?.role === 'instructor' ?
-                                    <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3" disabled>Select</button>
-                                    : <button onClick={() => handleSelect(cls)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Select</button>
+                                !user || cls?.seats === 0 || loggedUser?.role === 'admin' || loggedUser?.role === 'instructor' ?
+                                    <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3" disabled>{user ? 'Select' : 'Login to Select'}</button>
+                                    : <button onClick={() => handleSelect(cls)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Selet</button>
                             }
                         </div>
                     ))

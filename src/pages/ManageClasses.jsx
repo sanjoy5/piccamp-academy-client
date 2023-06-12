@@ -164,7 +164,7 @@ const ManageClasses = () => {
                                     <td className='space-x-1 space-y-1'>
                                         <button onClick={() => handleApprove(cls)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" disabled={cls.status === 'Approve' || cls.status === 'Deny' ? true : false} >Approve</button>
                                         <button onClick={() => handleDeny(cls)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" disabled={cls.status === 'Approve' || cls.status === 'Deny' ? true : false} >Deny</button>
-                                        <label onClick={() => handleFeedback(cls)} htmlhtmlFor="my_modal_6" className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Feedback</label>
+                                        <label onClick={() => handleFeedback(cls)} htmlFor="my_modal_6" className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Feedback</label>
                                     </td>
                                 </tr>
                             ))
@@ -186,13 +186,13 @@ const ManageClasses = () => {
             <div className="modal">
                 <div className="modal-box relative">
                     <div className="modal-action absolute right-3 -top-3">
-                        <label htmlhtmlFor="my_modal_6" className="py-2 px-2 bg-base-200 rounded-full cursor-pointer text-xl"><FaTimes /></label>
+                        <label htmlFor="my_modal_6" className="py-2 px-2 bg-base-200 rounded-full cursor-pointer text-xl"><FaTimes /></label>
                     </div>
                     <h3 className="font-bold text-2xl text-center text-indigo-500 mb-5">Feedback</h3>
 
                     <form onSubmit={handleForm}>
                         <div className="relative mb-4">
-                            <textarea id="feedback" name="feedback" className="w-full bg-white rounded border border-base-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                            <textarea id="feedback" name="feedback" className="w-full bg-transparent rounded border border-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none  py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <div className="text-center">
                             <button type='submit' className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send Feedback</button>

@@ -33,7 +33,7 @@ const Header = () => {
             isInstructor && <ActiveLink to='/dashboard/myclasses'>Dashboard</ActiveLink>
         }
         {
-            isStudent && <ActiveLink to={`dashboard/selectedclasses/${user?.email}`}>Dashboard</ActiveLink>
+            isStudent && <ActiveLink to={`dashboard/selectedclasses`}>Dashboard</ActiveLink>
         }
 
     </>
@@ -51,7 +51,10 @@ const Header = () => {
                                 {links}
                             </ul>
                         </div>
-                        <Link to='/' className=" text-2xl font-semibold"><span className='text-indigo-500'>Pic</span>Camp</Link>
+                        <Link to='/' className="flex title-font font-medium items-center md:justify-start justify-center ">
+                            <img src="https://i.ibb.co/CQVKS6y/dslr-camera.png" className='h-10 w-10' alt="" />
+                            <span className="ml-3 text-2xl font-semibold hidden sm:block">PicCamp</span>
+                        </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 space-x-6 text-lg">

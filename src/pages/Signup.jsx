@@ -18,41 +18,48 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        createUser(data.email, data.password)
-            .then(result => {
-                const registerUser = result.user
-                updateUserProfile(registerUser, data.name, data.photoURL)
-                    .then(() => {
-                        const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'student' }
-                        fetch('http://127.0.0.1:5000/users', {
-                            method: 'POST',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(saveUser)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                console.log(data);
-                                if (data.insertedId) {
-                                    setError('')
-                                    reset()
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'User was created successfully',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
-                                    navigate('/success')
-
-                                }
+        if (data.password === data.confirmpassword) {
+            createUser(data.email, data.password)
+                .then(result => {
+                    const registerUser = result.user
+                    updateUserProfile(registerUser, data.name, data.photoURL)
+                        .then(() => {
+                            const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'student' }
+                            fetch('http://127.0.0.1:5000/users', {
+                                method: 'POST',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(saveUser)
                             })
+                                .then(res => res.json())
+                                .then(data => {
+                                    console.log(data);
+                                    if (data.insertedId) {
+                                        setError('')
+                                        reset()
+                                        Swal.fire({
+                                            position: 'center',
+                                            icon: 'success',
+                                            title: 'User was created successfully',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        })
+                                        navigate('/success')
 
-                    })
-                    .catch(error => setError(error.message))
-            })
-            .catch(error => setError(error.message))
+                                    }
+                                })
+
+                        })
+                        .catch(error => setError(error.message))
+                })
+                .catch(error => setError(error.message))
+        }
+        else {
+            setError("Two pasword didn't matched")
+            return
+        }
+
     };
 
     const handleLoginWithGoogle = () => {
@@ -138,8 +145,7 @@ const Signup = () => {
 
                                 {/* TODO: Confirm password not work  */}
                                 <input className="p-2 rounded-xl border border-gray-400 outline-none bg-transparent" type="password" {...register("confirmpassword", { required: true })} placeholder="Confirm Password" />
-                                {errors.email && <span className='text-red-500 '>Confirm Password field is required</span>}
-                                {errors.password !== errors.confirmpassword && <span className='text-red-500 '>The password and confirm password fields must match</span>}
+                                {errors.confirmpassword && <span className='text-red-500 '>Confirm Password field is required</span>}
 
 
                                 <button type='submit' className="bg-indigo-500 rounded-xl text-white py-2 hover:scale-105 duration-300">Register</button>

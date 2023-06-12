@@ -4,34 +4,37 @@ import useUsers from '../../hooks/useUsers';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
+
 const PopularClasses = ({ popularClassesData }) => {
     // console.log(popularClassesData);
 
     const navigate = useNavigate()
+
     const { user } = useAuthContext()
     const [allusers] = useUsers()
     const loggedUser = allusers.find(us => us?.email === user?.email)
     // console.log(loggedUser, 'Logged User')
-
+    const token = localStorage.getItem('token')
 
     const handleSelect = data => {
         if (user) {
+            data.clsId = data?._id
             data.sname = user?.displayName
             data.semail = user?.email
             data.simage = user?.photoURL
 
-            // console.log('data : ', data);
+            console.log('data : ', data);
 
             fetch('http://127.0.0.1:5000/selectedclass', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    authorization: `bearer ${token}`
                 },
                 body: JSON.stringify(data)
             })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
+                    console.log(data);
                     if (data.insertedId) {
                         Swal.fire({
                             position: 'top-end',
@@ -43,21 +46,6 @@ const PopularClasses = ({ popularClassesData }) => {
                     }
                 })
 
-
-        } else {
-            Swal.fire({
-                title: 'Oppps!',
-                text: "Log in before selecting the course!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Login'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/login')
-                }
-            })
         }
 
     }
@@ -101,11 +89,10 @@ const PopularClasses = ({ popularClassesData }) => {
                                 </div>
 
                                 {
-                                    data?.seats === 0 || loggedUser?.role === 'admin' || loggedUser?.role === 'instructor' ?
-                                        <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3" disabled>Select</button>
-                                        : <button onClick={() => handleSelect(data)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Select</button>
+                                    !user || data?.seats === 0 || loggedUser?.role === 'admin' || loggedUser?.role === 'instructor' ?
+                                        <button className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3" disabled>{user ? 'Select' : 'Login to Select'}</button>
+                                        : <button onClick={() => handleSelect(data)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Seletct</button>
                                 }
-
                             </div>
                         </div>
                     ))

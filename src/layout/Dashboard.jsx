@@ -32,8 +32,10 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full text-base-content">
                         {/* Sidebar content here */}
-                        <Link to='/' className='md:px-5 md:py-5 text-2xl font-bold'><span className="text-indigo-500">PicCamp</span> Academy</Link>
-
+                        <Link to='/' className="flex title-font font-medium items-center md:justify-start justify-center mb-10 ">
+                            <img src="https://i.ibb.co/CQVKS6y/dslr-camera.png" className='h-10 w-10' alt="" />
+                            <span className="ml-3 text-2xl font-semibold">PicCamp</span>
+                        </Link>
 
                         {
                             isAdmin && <>

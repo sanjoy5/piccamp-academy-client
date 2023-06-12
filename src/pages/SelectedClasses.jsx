@@ -2,12 +2,50 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import useSelectedClasses from '../hooks/useSelectedClasses';
+import Swal from 'sweetalert2';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const SelectedClasses = () => {
     const [selectedClasses] = useSelectedClasses()
+    // console.log(selectedClasses, 'selected Classes');
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate('')
+    // const [axiosSecure] = useAxiosSecure()
 
-    console.log(selectedClasses, 'selected Classes');
+    const handleDelete = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to delete'`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://127.0.0.1:5000/deleteSelectedclass/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        authorization: `bearer ${token}`
+                    },
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('Delete: ', data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                `'Class has been deleted successfully'`,
+                                'success'
+                            )
+                        }
+                        navigate('/dashboard/selectedclasses')
+                    })
+
+            }
+        })
+    }
 
     return (
         <div>
@@ -57,10 +95,10 @@ const SelectedClasses = () => {
                                     <td>${cls.price}</td>
 
                                     <td>
-                                        <button className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Payment</button>
+                                        <Link to={`/dashboard/payment/${cls._id}`} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Payment</Link>
                                     </td>
                                     <td>
-                                        <button className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Delete</button>
+                                        <button onClick={() => handleDelete(cls?._id)} className="btn bg-indigo-500 hover:bg-indigo-600 btn-sm text-white" >Delete</button>
                                     </td>
                                 </tr>
                             ))
