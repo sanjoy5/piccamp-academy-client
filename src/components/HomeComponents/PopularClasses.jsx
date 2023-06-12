@@ -82,9 +82,13 @@ const PopularClasses = ({ popularClassesData }) => {
                                     <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
                                         <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Price : ${data.price}
                                     </div>
-                                    <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
-                                        <div className="h-2 w-2 bg-indigo-500 rounded"></div> Enrolled : {data.enrolled}
-                                    </div>
+
+                                    {
+                                        data?.enrolled && <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
+                                            <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Enrolled : {data.enrolled}
+                                        </div>
+                                    }
+
                                 </div>
                                 <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
                                     <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Available Seats : {data.seats}
