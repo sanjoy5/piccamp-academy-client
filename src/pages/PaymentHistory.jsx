@@ -1,15 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import { useAuthContext } from '../AuthProvider/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
-
-const EnrolledClasss = () => {
+const PaymentHistory = () => {
     const { user } = useAuthContext()
     const [axiosSecure] = useAxiosSecure()
 
-    const { data: enrolled = [] } = useQuery({
+    const { data: history = [] } = useQuery({
         queryKey: ['enrolled-history'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/enrolled-history/?email=${user?.email}`)
@@ -17,15 +16,15 @@ const EnrolledClasss = () => {
         }
     })
 
-    console.log(enrolled);
 
     return (
         <div>
             <Helmet>
-                <title>Selected Classes - PicCamp Academy</title>
+                <title>Payment History - PicCamp Academy</title>
             </Helmet>
 
-            <h2 className="text-2xl md:text-4xl font-bold text-center mb-5 bg-base-200 py-6"><span className="text-indigo-500">Enrolled</span> Classes</h2>
+            <h2 className="text-2xl md:text-4xl font-bold text-center mb-5 bg-base-200 py-6"><span className="text-indigo-500">Payment</span> History</h2>
+
 
             <div className="overflow-x-auto px-5 md:px-10 py-5">
 
@@ -34,35 +33,29 @@ const EnrolledClasss = () => {
                     <thead>
                         <tr className='text-base'>
                             <th>SN</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Instructor Name</th>
+                            <th>Transaction Id</th>
+                            <th>Class Name</th>
                             <th>Instructor Email</th>
-                            <th>Enrolled Date</th>
+                            <th>Price</th>
+                            <th>Payment Date</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         {
-                            enrolled?.map((cls, idx) => {
-                                const { image, cname, iname, email } = cls.selected;
+                            history?.map((cls, idx) => {
+                                const { cname, email, price } = cls.selected;
                                 return (
                                     <tr key={cls._id}>
                                         <td>{idx + 1}</td>
                                         <td>
-                                            <div className="flex items-center space-x-3">
-                                                <div className="avatar">
-                                                    <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={image} alt="Avatar Tailwind CSS Component" />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {cls.transactionId}
                                         </td>
                                         <td>{cname} </td>
                                         <td>
-                                            {iname}
+                                            {email}
                                         </td>
-                                        <td>{email}</td>
+                                        <td>${price}</td>
                                         <td>{cls.date}</td>
 
                                     </tr>
@@ -83,4 +76,4 @@ const EnrolledClasss = () => {
     );
 };
 
-export default EnrolledClasss;
+export default PaymentHistory;

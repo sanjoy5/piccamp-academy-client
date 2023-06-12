@@ -20,6 +20,7 @@ import StudentRoute from "./StudentRoute";
 import Payment from "../pages/Payment";
 import ErrorPage from "../pages/ErrorPage";
 import EnrolledClasss from "../pages/EnrolledClasss";
+import PaymentHistory from "../pages/PaymentHistory";
 
 
 
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
             {
                 path: 'enrolled',
                 element: <EnrolledClasss></EnrolledClasss>
+            },
+            {
+                path: 'paymenthistory',
+                element: <PaymentHistory></PaymentHistory>
             },
 
         ]

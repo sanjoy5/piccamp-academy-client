@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaBars, FaHome, FaUserTie, FaUserCog, FaBook, FaRegGem } from 'react-icons/fa';
-import { MdOutlinePostAdd, MdChecklist } from 'react-icons/md';
+import { MdOutlinePostAdd, MdChecklist, MdOutlinePayment } from 'react-icons/md';
 import { FiCheckSquare } from 'react-icons/fi';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import ToggleMode from '../components/ToggleMode';
@@ -53,6 +53,7 @@ const Dashboard = () => {
                             isStudent && <>
                                 <li><NavLink className='text-lg' to='/dashboard/selectedclasses'><FiCheckSquare className='text-xl' />Selected Classes</NavLink></li>
                                 <li><NavLink className='text-lg' to='/dashboard/enrolled'><FaRegGem className='text-xl' />Enrolled Classes</NavLink></li>
+                                <li><NavLink className='text-lg' to='/dashboard/paymenthistory'><MdOutlinePayment className='text-xl' />Payment History</NavLink></li>
                             </>
 
                         }
