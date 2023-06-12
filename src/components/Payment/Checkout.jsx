@@ -88,7 +88,8 @@ const Checkout = ({ selected }) => {
             // Save Payment Info 
             console.log(transactionId, 'tran');
             const payment = {
-                transactionId: transactionId,
+                transactionId: paymentIntent.id,
+                email: user?.email,
                 selected,
                 updatecls,
                 orderStatus: 'Pending',

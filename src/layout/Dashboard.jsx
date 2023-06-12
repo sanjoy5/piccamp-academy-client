@@ -52,7 +52,7 @@ const Dashboard = () => {
                         {
                             isStudent && <>
                                 <li><NavLink className='text-lg' to='/dashboard/selectedclasses'><FiCheckSquare className='text-xl' />Selected Classes</NavLink></li>
-                                <li><NavLink className='text-lg' to='/dashboard/enrolledclasses'><FaRegGem className='text-xl' />Enrolled Classes</NavLink></li>
+                                <li><NavLink className='text-lg' to='/dashboard/enrolled'><FaRegGem className='text-xl' />Enrolled Classes</NavLink></li>
                             </>
 
                         }
