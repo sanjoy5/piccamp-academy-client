@@ -11,9 +11,9 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK)
 const Payment = () => {
 
     const [selectedClasses] = useSelectedClasses()
-    // console.log(selectedClasses);
     const { id } = useParams()
     const selected = selectedClasses.find(cls => cls._id === id)
+    console.log(selected);
 
 
     return (

@@ -1,52 +1,52 @@
 import React, { useState } from 'react';
 import { useAuthContext } from '../../AuthProvider/AuthProvider';
 import useUsers from '../../hooks/useUsers';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useSelectedClasses from '../../hooks/useSelectedClasses';
 
 
 const PopularClasses = ({ popularClassesData }) => {
-    // console.log(popularClassesData);
-
-    const navigate = useNavigate()
 
     const { user } = useAuthContext()
+    const [selectedClasses, refetch] = useSelectedClasses()
     const [allusers] = useUsers()
     const loggedUser = allusers.find(us => us?.email === user?.email)
-    // console.log(loggedUser, 'Logged User')
-    const token = localStorage.getItem('token')
+    const [axiosSecure] = useAxiosSecure()
+
 
     const handleSelect = data => {
-        if (user) {
-            data.clsId = data?._id
-            data.sname = user?.displayName
-            data.semail = user?.email
-            data.simage = user?.photoURL
+        // console.log('Data : ', data);
 
-            console.log('data : ', data);
-
-            fetch('http://127.0.0.1:5000/selectedclass', {
-                method: 'POST',
-                headers: {
-                    authorization: `bearer ${token}`
-                },
-                body: JSON.stringify(data)
+        const existsClass = selectedClasses.find(cls => cls?.cId === data?._id)
+        if (existsClass) {
+            refetch()
+            Swal.fire({
+                position: 'top-end',
+                title: 'Allready Selected',
+                showConfirmButton: false,
+                timer: 1500
             })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    if (data.insertedId) {
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Class Selected Successfully',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-                })
-
+            return
         }
+
+        const { _id, cname, email, enrolled, image, iname, price, seats } = data;
+        const selectCls = { cId: _id, cname, email, enrolled, image, iname, price, seats, sname: user?.displayName, semail: user?.email }
+
+
+        axiosSecure.post('/selectedclass', selectCls)
+            .then(res => {
+                if (res.data.insertedId) {
+                    refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Class Selected Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
 
     }
 
@@ -83,9 +83,11 @@ const PopularClasses = ({ popularClassesData }) => {
                                         <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Price : ${data.price}
                                     </div>
                                     <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
-                                        <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Available Seats : {data.seats}
+                                        <div className="h-2 w-2 bg-indigo-500 rounded"></div> Enrolled : {data.enrolled}
                                     </div>
-
+                                </div>
+                                <div className="text-base leading-relaxed mt-1 flex items-center gap-2">
+                                    <div className="h-2 w-2 bg-indigo-500 rounded"></div>  Available Seats : {data.seats}
                                 </div>
 
                                 {

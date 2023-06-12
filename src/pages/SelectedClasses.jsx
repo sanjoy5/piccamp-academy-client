@@ -7,16 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const SelectedClasses = () => {
-    const [selectedClasses] = useSelectedClasses()
-    // console.log(selectedClasses, 'selected Classes');
+    const [selectedClasses, refetch] = useSelectedClasses()
     const token = localStorage.getItem('token')
-    const navigate = useNavigate('')
-    // const [axiosSecure] = useAxiosSecure()
 
     const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
-            text: `You want to delete'`,
+            text: `You want to delete it!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -32,17 +29,15 @@ const SelectedClasses = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log('Delete: ', data);
+                        refetch()
                         if (data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                `'Class has been deleted successfully'`,
+                                'Selected Class has been deleted successfully',
                                 'success'
                             )
                         }
-                        navigate('/dashboard/selectedclasses')
                     })
-
             }
         })
     }
@@ -62,6 +57,7 @@ const SelectedClasses = () => {
                     {/* head */}
                     <thead>
                         <tr className='text-base'>
+                            <th>SN</th>
                             <th>Image</th>
                             <th>Name</th>
                             <th>Instructor</th>
@@ -74,9 +70,9 @@ const SelectedClasses = () => {
                     <tbody>
 
                         {
-                            selectedClasses?.map((cls) => (
+                            selectedClasses?.map((cls, idx) => (
                                 <tr key={cls._id}>
-
+                                    <td>{idx + 1}</td>
                                     <td>
                                         <div className="flex items-center space-x-3">
                                             <div className="avatar">

@@ -19,12 +19,18 @@ const Checkout = ({ selected }) => {
 
     const price = parseFloat(selected?.price.toFixed(2))
 
+    const updatecls = classes?.find(cls => cls?._id == selected?.cId)
+
+
+
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                // console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret)
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    // console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
     }, [price, axiosSecure])
 
 
@@ -76,19 +82,22 @@ const Checkout = ({ selected }) => {
 
         setProcessing(false)
 
-        if (paymentIntent.status === 'succeeded') {
+        if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id)
 
             // Save Payment Info 
+            console.log(transactionId, 'tran');
             const payment = {
-                transactionId,
+                transactionId: transactionId,
                 selected,
+                updatecls,
                 orderStatus: 'Pending',
                 date: new Date()
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
-                    if (res.data.insertedId) {
+                    console.log('Payment : ', res.data);
+                    if (res.data.result.insertedId) {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -102,11 +111,14 @@ const Checkout = ({ selected }) => {
 
     }
     return (
-        <div className='payments'>
+        <div className='payments w-full'>
+
+
 
 
             <form onSubmit={handleSubmit}>
-                <CardElement
+
+                <CardElement className='payment'
                     options={{
                         style: {
                             base: {

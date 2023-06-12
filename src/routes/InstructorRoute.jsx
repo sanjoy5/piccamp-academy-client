@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthContext } from '../AuthProvider/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import useInstructor from '../hooks/useInstructor';
+import Loading from '../components/Loading';
 
 const InstructorRoute = ({ children }) => {
     const { user, loading } = useAuthContext()
@@ -9,7 +10,7 @@ const InstructorRoute = ({ children }) => {
     const location = useLocation()
 
     if (loading || isInstructorLoading) {
-        return 'Loading ...'
+        return <Loading />
     }
     if (user || isInstructor) {
         return children
