@@ -1,6 +1,4 @@
-# PicCamp Academy
-
-![Logo](https://i.ibb.co/CQVKS6y/dslr-camera.png)
+# ![Logo](https://i.ibb.co/CQVKS6y/dslr-camera.png)  PicCamp Academy
 
 This project was created with ReactJS, Express Js and Mongo DB.
 
