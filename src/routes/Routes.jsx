@@ -18,6 +18,7 @@ import UpdateClasses from "../pages/UpdateClasses";
 import SelectedClasses from "../pages/SelectedClasses";
 import StudentRoute from "./StudentRoute";
 import Payment from "../pages/Payment";
+import ErrorPage from "../pages/ErrorPage";
 
 
 
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
     {
         path: "/success",
         element: <Success />
+    },
+    {
+        path: "*",
+        element: <ErrorPage />
     },
 ]);
 

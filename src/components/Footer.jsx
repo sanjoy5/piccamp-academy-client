@@ -91,23 +91,10 @@ const Footer = () => {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto">
-                <div className="container mx-auto py-10 border-t px-5 flex flex-wrap flex-col sm:flex-row">
-                    <p className="text-gray-500 text-sm text-center sm:text-left">Sanjoy Sarker &copy; 2023 | All Rights Reserved
+                <div className=" mx-auto py-10 border-t px-5">
+                    <p className="text-gray-500 text-sm text-center">Sanjoy Sarker &copy; 2023 | All Rights Reserved
                     </p>
-                    <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start cursor-pointer">
-                        <a className="text-gray-500">
-                            <FaFacebookF />
-                        </a>
-                        <a className="ml-3 text-gray-500">
-                            <FaLinkedinIn />
-                        </a>
-                        <a className="ml-3 text-gray-500">
-                            <FaTwitter />
-                        </a>
-                        <a className="ml-3 text-gray-500">
-                            <FaYoutube />
-                        </a>
-                    </span>
+
                 </div>
             </div>
         </footer>
