@@ -25,7 +25,7 @@ const Signup = () => {
                     updateUserProfile(registerUser, data.name, data.photoURL)
                         .then(() => {
                             const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: 'student' }
-                            fetch('http://127.0.0.1:5000/users', {
+                            fetch('https://pic-camp-academy-server.vercel.app/users', {
                                 method: 'POST',
                                 headers: {
                                     'content-type': 'application/json'
@@ -68,7 +68,7 @@ const Signup = () => {
             .then(result => {
                 const loggedUser = result.user
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email, photo: loggedUser.photoURL, role: 'student' }
-                fetch('http://127.0.0.1:5000/users', {
+                fetch('https://pic-camp-academy-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -143,7 +143,7 @@ const Signup = () => {
                                 {errors.password?.type === 'pattern' && <p className='text-red-500 '>Password must be at least a symbol, upper and lower case letters and a number
                                 </p>}
 
-                                {/* TODO: Confirm password not work  */}
+
                                 <input className="p-2 rounded-xl border border-gray-400 outline-none bg-transparent" type="password" {...register("confirmpassword", { required: true })} placeholder="Confirm Password" />
                                 {errors.confirmpassword && <span className='text-red-500 '>Confirm Password field is required</span>}
 

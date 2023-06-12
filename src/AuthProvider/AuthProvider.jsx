@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
 
             // get and set token to localStorage 
             if (currenUser) {
-                axios.post('http://127.0.0.1:5000/jwt', {
+                axios.post('https://pic-camp-academy-server.vercel.app/jwt', {
                     email: currenUser.email
                 })
                     .then(data => {

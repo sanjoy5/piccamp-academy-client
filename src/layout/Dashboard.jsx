@@ -64,7 +64,7 @@ const Dashboard = () => {
 
                         <li><NavLink className='text-lg' to='/'><FaHome className='text-xl' /> Home</NavLink></li>
                         <li><NavLink className='text-lg' to='/classes'><FaBars className='text-xl' /> Classes</NavLink></li>
-                        <li><NavLink className='text-lg' to='/insttructors'><FaUserTie className='text-xl' /> Instructors</NavLink></li>
+                        <li><NavLink className='text-lg' to='/instructors'><FaUserTie className='text-xl' /> Instructors</NavLink></li>
                     </ul>
 
                 </div>

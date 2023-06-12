@@ -21,7 +21,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://127.0.0.1:5000/deleteSelectedclass/${id}`, {
+                fetch(`https://pic-camp-academy-server.vercel.app/deleteSelectedclass/${id}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `bearer ${token}`

@@ -5,7 +5,7 @@ const useClasses = () => {
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('http://127.0.0.1:5000/classes')
+            const res = await fetch('https://pic-camp-academy-server.vercel.app/classes')
             return res.json()
         }
     })

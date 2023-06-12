@@ -4,7 +4,7 @@ const useUsers = () => {
     const { data: allusers = [], isLoading: loading } = useQuery({
         queryKey: ['allusers'],
         queryFn: async () => {
-            const res = await fetch('http://127.0.0.1:5000/allusers')
+            const res = await fetch('https://pic-camp-academy-server.vercel.app/allusers')
             return res.json()
         }
     })

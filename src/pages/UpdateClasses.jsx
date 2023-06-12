@@ -38,7 +38,7 @@ const UpdateClasses = () => {
                         const { cname, iname, email, seats, price } = data
                         const newClass = { cname, image: imgURL, iname, email, seats: parseInt(seats), price: parseFloat(price) }
                         console.log('new with image: ', newClass);
-                        fetch(`http://127.0.0.1:5000/updateclasses/${updateData._id}`, {
+                        fetch(`https://pic-camp-academy-server.vercel.app/updateclasses/${updateData._id}`, {
                             method: 'PATCH',
                             headers: {
                                 'content-type': 'application/json'
@@ -66,7 +66,7 @@ const UpdateClasses = () => {
             const { cname, iname, email, seats, price } = data
             const newClass = { cname, image: updateData?.image, iname, email, seats: parseInt(seats), price: parseFloat(price) }
             console.log('new: ', newClass);
-            fetch(`http://127.0.0.1:5000/updateclasses/${updateData._id}`, {
+            fetch(`https://pic-camp-academy-server.vercel.app/updateclasses/${updateData._id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

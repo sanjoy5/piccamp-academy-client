@@ -9,7 +9,7 @@ const useAdmin = () => {
         queryKey: ['isAdmin', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const res = await fetch(`http://127.0.0.1:5000/users/admin/${user?.email}`, {
+        //     const res = await fetch(`https://pic-camp-academy-server.vercel.app/users/admin/${user?.email}`, {
         //         headers: {
         //             authorization: `bearer ${token}`
         //         }

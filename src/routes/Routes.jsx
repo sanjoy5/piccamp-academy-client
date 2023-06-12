@@ -33,12 +33,12 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                loader: () => fetch('http://127.0.0.1:5000/popularclasses')
+                loader: () => fetch('https://pic-camp-academy-server.vercel.app/popularclasses')
             },
             {
                 path: "/instructors",
                 element: <Instructors />,
-                loader: () => fetch('http://127.0.0.1:5000/instructors')
+                loader: () => fetch('https://pic-camp-academy-server.vercel.app/instructors')
             },
             {
                 path: "/classes",
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
             {
                 path: 'updateclasses/:id',
                 element: <InstructorRoute> <UpdateClasses></UpdateClasses></InstructorRoute>,
-                loader: ({ params }) => fetch(`http://127.0.0.1:5000/updateclasses/${params.id}`)
+                loader: ({ params }) => fetch(`https://pic-camp-academy-server.vercel.app/updateclasses/${params.id}`)
             },
             {
                 path: 'selectedclasses',

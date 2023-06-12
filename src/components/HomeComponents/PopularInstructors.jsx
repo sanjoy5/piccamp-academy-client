@@ -6,7 +6,7 @@ const PopularInstructors = () => {
     const [instructors, setInstructors] = useState([])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/popularInstructors')
+        fetch('https://pic-camp-academy-server.vercel.app/popularInstructors')
             .then(res => res.json())
             .then(data => {
                 setInstructors(data)
