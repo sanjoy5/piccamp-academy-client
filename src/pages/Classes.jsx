@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useClasses from '../hooks/useClasses';
 import useSelectedClasses from '../hooks/useSelectedClasses';
+import { motion } from "framer-motion";
 
 const Classes = () => {
 
@@ -59,7 +60,7 @@ const Classes = () => {
                 {
                     classes?.map(data => {
                         return (
-                            <div key={data._id} className={data?.seats === 0 ? "bg-red-100" : ""}>
+                            <motion.div whileInView={{ scale: 1 }} initial={{ scale: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} key={data._id} className={data?.seats === 0 ? "bg-red-100" : ""}>
                                 <div className="rounded-lg h-64 overflow-hidden">
                                     <img alt="content" className="object-cover object-center h-full w-full" src={data.image} />
                                 </div>
@@ -89,7 +90,7 @@ const Classes = () => {
                                             : <button onClick={() => handleSelect(data)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Seletct</button>
                                     }
                                 </div>
-                            </div>
+                            </motion.div>
                         )
                     })
                 }

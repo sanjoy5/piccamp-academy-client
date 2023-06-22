@@ -98,15 +98,6 @@ const Checkout = ({ selected }) => {
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log('Payment : ', res.data);
-                    if (res.data.result.insertedId) {
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Payment Successfull',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
                 })
         }
 

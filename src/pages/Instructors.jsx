@@ -3,6 +3,7 @@ import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import HeaderBanner from '../components/HeaderBanner';
+import { motion } from "framer-motion";
 
 const Instructors = () => {
     const instructors = useLoaderData()
@@ -19,7 +20,7 @@ const Instructors = () => {
                         const { name, email, photo, role
                         } = instructor;
                         return (
-                            <div key={idx} className="p-2 lg:w-1/3 md:w-1/2 w-full">
+                            <motion.div whileInView={{ scale: 1 }} initial={{ scale: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} key={idx} className="p-2 lg:w-1/3 md:w-1/2 w-full">
                                 <div className="h-full flex flex-col sm:flex-row items-center gap-4 border-base-200 border p-4 rounded-lg">
                                     <div className="w-1/3">
                                         <img alt="team" className="max-w-[100px] max-h-[100px] bg-gray-100 object-cover object-center rounded-full" src={photo} />
@@ -35,7 +36,7 @@ const Instructors = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         )
                     })
                 }

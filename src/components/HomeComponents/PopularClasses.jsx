@@ -4,6 +4,7 @@ import useUsers from '../../hooks/useUsers';
 import Swal from 'sweetalert2'
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useSelectedClasses from '../../hooks/useSelectedClasses';
+import { motion } from "framer-motion";
 
 
 const PopularClasses = ({ popularClassesData }) => {
@@ -13,6 +14,7 @@ const PopularClasses = ({ popularClassesData }) => {
     const [allusers] = useUsers()
     const loggedUser = allusers.find(us => us?.email === user?.email)
     const [axiosSecure] = useAxiosSecure()
+
 
 
     const handleSelect = data => {
@@ -53,12 +55,12 @@ const PopularClasses = ({ popularClassesData }) => {
 
     return (
         <div className='pt-16 md:pt-24 pb-10 px-2'>
-            <div className="flex flex-col text-center w-full mb-20">
+            <motion.div whileInView={{ scale: 1 }} initial={{ scale: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} className="flex flex-col text-center w-full mb-20">
                 <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Mastering the Shot</h2>
                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4">Popular Classes</h1>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Embark on a transformative photography journey. Master technical skills, explore artistic expressions, and discover the power of visual storytelling. Unleash your creativity and join our inspiring photography classes.</p>
                 <div className="h-1 w-20 bg-indigo-500 rounded mt-5 mx-auto"></div>
-            </div>
+            </motion.div>
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
@@ -66,7 +68,7 @@ const PopularClasses = ({ popularClassesData }) => {
                 {
                     popularClassesData?.map((data, idx) => (
 
-                        <div key={idx} className={data?.seats === 0 ? "bg-red-100" : ""}>
+                        <motion.div whileInView={{ scale: 1 }} initial={{ scale: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} key={idx} className={data?.seats === 0 ? "bg-red-100" : ""}>
                             <div className="rounded-lg h-64 overflow-hidden">
                                 <img alt="content" className="object-cover object-center h-full w-full" src={data.image} />
                             </div>
@@ -100,7 +102,7 @@ const PopularClasses = ({ popularClassesData }) => {
                                         : <button onClick={() => handleSelect(data)} className="btn bg-indigo-500 text-white hover:bg-indigo-600 mt-3">Seletct</button>
                                 }
                             </div>
-                        </div>
+                        </motion.div>
                     ))
                 }
 

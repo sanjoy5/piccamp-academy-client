@@ -20,7 +20,7 @@ This project was created with ReactJS, Express Js and Mongo DB.
 
 ## Live Site Link
 
-- [Firebase Live Client Side Link](https://pic-camp-academy.web.app/)
+- [Firebase Live Client Side Link](https://pic-camp-academy-server.vercel.app/)
 - [Vercel Live Server Side Link](https://pic-camp-academy-server.vercel.app/)
 
 ## Installation

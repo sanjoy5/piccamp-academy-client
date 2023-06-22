@@ -12,7 +12,7 @@ const EnrolledClasss = () => {
     const { data: enrolled = [] } = useQuery({
         queryKey: ['enrolled-history'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/enrolled-history/?email=${user?.email}`)
+            const res = await axiosSecure.get(`/enrolled-history?email=${user?.email}`)
             return res.data
         }
     })

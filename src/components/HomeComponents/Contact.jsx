@@ -1,18 +1,19 @@
 import React from 'react';
+import { motion } from "framer-motion";
 
 const Contact = () => {
     return (
         <div className='py-16 md:pt-24 px-2'>
-            <div className="flex flex-col text-center w-full mb-14">
+            <motion.div whileInView={{ scale: 1 }} initial={{ scale: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} className="flex flex-col text-center w-full mb-14">
                 <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">Reach Us Now</h2>
                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4">Contact Us</h1>
                 <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Whether you have inquiries, feedback, or want to collaborate, our dedicated team is ready to assist you. Reach out today and let's create something extraordinary together.</p>
                 <div className="h-1 w-20 bg-indigo-500 rounded mt-5 mx-auto"></div>
-            </div>
+            </motion.div>
 
 
 
-            <div className="lg:w-1/2 md:w-2/3 mx-auto">
+            <motion.div whileInView={{ scale: 1 }} initial={{ scale: 0 }} transition={{ duration: 1 }} viewport={{ once: true }} className="lg:w-1/2 md:w-2/3 mx-auto">
                 <div className="flex flex-wrap">
                     <div className="p-2 w-full md:w-1/2">
                         <div className="relative">
@@ -37,7 +38,7 @@ const Contact = () => {
                     </div>
 
                 </div>
-            </div>
+            </motion.div>
 
         </div>
     );

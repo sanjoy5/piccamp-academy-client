@@ -6,6 +6,7 @@ import { useAuthContext } from '../AuthProvider/AuthProvider';
 
 
 const axiosSecure = axios.create({
+
     baseURL: 'https://pic-camp-academy-server.vercel.app',
 });
 
